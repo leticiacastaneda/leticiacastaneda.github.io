@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sobre mí — Leticia Castañeda</title>
+  <meta name="description" content="Pedagoga y especialista en diseño instruccional y desarrollo organizacional con 15 años de experiencia en manufactura global y lujo mexicano.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400&family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    /* ---- Estilos específicos de esta página ---- */
+
+    .sobre-hero {
+      padding: 90px 0 70px;
+    }
+
+    .sobre-grid {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .foto-columna {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .foto-marco {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      overflow: hidden;
+      border-radius: 4px;
+      background: var(--superficie);
+    }
+
+    .foto-marco img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      filter: grayscale(15%);
+      transition: filter 0.4s;
+    }
+
+    .foto-marco img:hover { filter: grayscale(0%); }
+
+    .datos-rapidos {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .dato {
+      font-size: 0.88rem;
+      color: var(--tinta-suave);
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      line-height: 1.5;
+    }
+
+    .dato-etiqueta {
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--acento);
+      white-space: nowrap;
+      padding-top: 1px;
+    }
+
+    /* ---- Texto bio ---- */
+
+    .bio-texto h2 {
+      font-size: clamp(1.9rem, 4vw, 2.6rem);
+      margin-bottom: 10px;
+    }
+
+    .bio-texto .subtitulo {
+      font-size: 1.05rem;
+      color: var(--acento);
+      letter-spacing: 0.06em;
+      margin-bottom: 36px;
+    }
+
+    .bio-texto p {
+      margin-bottom: 22px;
+      max-width: 640px;
+    }
+
+    .bio-texto p:last-child { margin-bottom: 0; }
+
+    /* ---- Herramientas ---- */
+
+    .herramientas { background: var(--superficie); }
+
+    .categorias {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 28px;
+      margin-top: 42px;
+    }
+
+    .categoria {
+      background: var(--fondo);
+      border-radius: 4px;
+      padding: 28px 26px;
+      border: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+
+    .categoria:hover { border-color: var(--acento); }
+
+    .categoria h3 {
+      font-size: 0.82rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--acento);
+      margin-bottom: 16px;
+    }
+
+    .lista-tools {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .lista-tools li {
+      font-size: 0.97rem;
+      color: var(--tinta-suave);
+      padding-left: 14px;
+      position: relative;
+    }
+
+    .lista-tools li::before {
+      content: "·";
+      position: absolute;
+      left: 0;
+      color: var(--acento);
+    }
+
+    .lista-tools li em {
+      font-style: normal;
+      font-size: 0.82rem;
+      color: var(--acento);
+      opacity: 0.8;
+    }
+
+    /* ---- Podcast ---- */
+
+    .podcast-seccion { padding: 80px 0; }
+
+    .podcast-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 56px;
+      align-items: center;
+    }
+
+    .podcast-texto h2 { margin-bottom: 10px; }
+
+    .podcast-texto p {
+      color: var(--tinta-suave);
+      margin-top: 16px;
+      max-width: 420px;
+    }
+
+    .spotify-embed {
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    /* ---- Responsivo ---- */
+
+    @media (max-width: 760px) {
+      .sobre-grid { grid-template-columns: 1fr; gap: 36px; }
+      .foto-marco { aspect-ratio: 1 / 1; max-width: 220px; }
+      .podcast-grid { grid-template-columns: 1fr; gap: 36px; }
+      .sobre-hero { padding: 60px 0 50px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============ NAVEGACIÓN ============ -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="marca" href="index.html">Leticia Castañeda</a>
+      <ul class="nav-links">
+        <li><a href="index.html#proyectos">Proyectos</a></li>
+        <li><a href="sobre-mi.html">Sobre mí</a></li>
+        <li><a href="index.html#contacto">Contacto</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ============ HERO + BIO ============ -->
+  <section class="sobre-hero">
+    <div class="contenedor">
+      <div class="sobre-grid">
+
+        <!-- Columna izquierda: foto + datos rápidos -->
+        <div class="foto-columna">
+          <div class="foto-marco">
+            <img src="Leticia_C.jpg" alt="Leticia Castañeda, pedagoga y diseñadora instruccional">
+          </div>
+          <div class="datos-rapidos">
+            <div class="dato">
+              <span class="dato-etiqueta">Base</span>
+              <span>Guadalajara, México</span>
+            </div>
+            <div class="dato">
+              <span class="dato-etiqueta">Idiomas</span>
+              <span>Español (nativo) · Inglés (profesional)</span>
+            </div>
+            <div class="dato">
+              <span class="dato-etiqueta">Experiencia</span>
+              <span>15 años en ámbitos educativos y corporativos</span>
+            </div>
+            <div class="dato">
+              <span class="dato-etiqueta">Toastmasters</span>
+              <span>Advanced Communicator & Leader · 10 años de membresía</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Columna derecha: texto bio -->
+        <div class="bio-texto">
+          <h2>Leticia Castañeda</h2>
+          <p class="subtitulo">Pedagoga · Diseño instruccional · Desarrollo organizacional</p>
+
+          <p>
+            Descubrí mi vocación a los 18 años, como becaria en una escuela de inglés,
+            y desde entonces no he dejado de moverme: biblioteca universitaria, centro de
+            innovación educativa, rediseño de planes de estudio, capacitación industrial,
+            desarrollo organizacional corporativo. De lo académico a lo empresarial; del
+            soporte a la ejecución; del diseño a la implementación. Quince años después,
+            mi trabajo tiene una constante: llevar la ciencia del aprendizaje a lugares
+            donde nadie la espera.
+          </p>
+
+          <p>
+            Lo que más me mueve hoy es descifrar la cultura de las organizaciones —
+            esa fascinante distancia entre lo que las empresas dicen y lo que hacen.
+            No creo que una persona pueda arreglar un sistema completo, pero sí creo
+            —y he visto— que se puede enseñar a las personas a trabajar lo que está
+            bajo su control, con profesionalismo y hasta con disfrute.
+          </p>
+
+          <p>
+            Trabajo con dos motores: profundizo en la teoría hasta entender qué pasa
+            a nivel psicológico, social y sistémico, y luego la confronto con la realidad
+            para construir experiencias que hacen sentido. Cuando algo que diseñé resuena
+            en alguien y le cambia la perspectiva, ahí encuentro mi propio sentido.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HERRAMIENTAS ============ -->
+  <section class="herramientas">
+    <div class="contenedor">
+      <h2 class="titulo-seccion">Herramientas y habilidades</h2>
+      <hr class="linea">
+
+      <div class="categorias">
+
+        <div class="categoria">
+          <h3>Diseño instruccional</h3>
+          <ul class="lista-tools">
+            <li>Articulate 360</li>
+            <li>Adobe Captivate <em>versiones anteriores</em></li>
+            <li>Hot Potatoes <em>paquetería SCORM</em></li>
+            <li>Moodle</li>
+            <li>SAP SuccessFactors LMS</li>
+            <li>Workday LMS</li>
+          </ul>
+        </div>
+
+        <div class="categoria">
+          <h3>Productividad y diseño</h3>
+          <ul class="lista-tools">
+            <li>Microsoft 365: Word, PowerPoint, Excel, Visio, Forms, Clipchamp</li>
+            <li>Google Workspace: Docs, Slides, Sheets, Forms</li>
+            <li>Canva</li>
+            <li>Powtoon · Moovly <em>video animado</em></li>
+            <li>Audacity <em>edición de audio</em></li>
+          </ul>
+        </div>
+
+        <div class="categoria">
+          <h3>Plataformas y sistemas</h3>
+          <ul class="lista-tools">
+            <li>SAP SuccessFactors <em>ERP</em></li>
+            <li>Workday <em>ERP</em></li>
+            <li>SharePoint</li>
+            <li>Google Sites · Wix · GitHub Pages</li>
+            <li>SurveyMonkey · JotForm</li>
+          </ul>
+        </div>
+
+        <div class="categoria">
+          <h3>Inteligencia artificial</h3>
+          <ul class="lista-tools">
+            <li>Claude · ChatGPT · Gemini</li>
+            <li>Copilot · Perplexity</li>
+            <li>Exploración continua <em>de nuevas plataformas</em></li>
+          </ul>
+        </div>
+
+        <div class="categoria">
+          <h3>Comunicación y facilitación</h3>
+          <ul class="lista-tools">
+            <li>Toastmasters <em>Advanced Communicator & Leader</em></li>
+            <li>Facilitación presencial y virtual</li>
+            <li>Podcast <em>producción con IA</em></li>
+            <li>Oratoria para audiencias directivas</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PODCAST ============ -->
+  <section class="podcast-seccion">
+    <div class="contenedor">
+      <div class="podcast-grid">
+
+        <div class="podcast-texto">
+          <p class="hero-cejilla">También me encuentras aquí</p>
+          <h2 class="titulo-seccion">Kilometraje Corporativo</h2>
+          <p>
+            Un podcast sobre cultura organizacional: esa fascinante distancia entre
+            lo que las empresas dicen y lo que realmente hacen. Producido íntegramente
+            con herramientas de inteligencia artificial.
+          </p>
+          <br>
+          <a class="boton boton-suave"
+             href="https://open.spotify.com/show/7cbsrFc60LjgTQuLOnTyHB"
+             target="_blank" rel="noopener">
+            Escuchar en Spotify
+          </a>
+        </div>
+
+        <div class="spotify-embed">
+          <iframe
+            src="https://open.spotify.com/embed/show/7cbsrFc60LjgTQuLOnTyHB?utm_source=generator&theme=0"
+            width="100%"
+            height="352"
+            frameborder="0"
+            allowfullscreen=""
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy">
+          </iframe>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PIE ============ -->
+  <footer>
+    <div class="pie-inner">
+      <span>© 2026 Leticia Castañeda</span>
+      <a href="https://open.spotify.com/show/7cbsrFc60LjgTQuLOnTyHB"
+         target="_blank" rel="noopener">Kilometraje Corporativo · Podcast</a>
+    </div>
+  </footer>
+
+</body>
+</html>
