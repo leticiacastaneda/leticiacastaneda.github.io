@@ -1,0 +1,364 @@
+/* ============================================================
+   LETICIA CASTAÑEDA — Portafolio
+   Sistema de diseño: Lavanda editorial
+   Para cambiar colores o tipografías de TODO el sitio,
+   edita únicamente las variables de esta sección.
+   ============================================================ */
+
+:root {
+  --fondo:        #F7F6FA;   /* blanco lavanda */
+  --superficie:   #E4E0EE;   /* lavanda pálida (tarjetas, bloques) */
+  --acento:       #8B7FA8;   /* malva */
+  --profundo:     #564D73;   /* púrpura grisáceo (hovers, detalles) */
+  --tinta:        #1F1B2E;   /* casi negro violáceo (textos) */
+  --tinta-suave:  #55506B;   /* texto secundario */
+
+  --titulos: 'Josefin Sans', sans-serif;
+  --cuerpo:  'Work Sans', sans-serif;
+
+  --ancho-max: 1040px;
+}
+
+/* ---------- Base ---------- */
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--fondo);
+  color: var(--tinta);
+  font-family: var(--cuerpo);
+  font-size: 17px;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  font-family: var(--titulos);
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  line-height: 1.25;
+}
+
+a { color: var(--profundo); }
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--acento);
+  outline-offset: 3px;
+}
+
+.contenedor {
+  max-width: var(--ancho-max);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ---------- Navegación ---------- */
+
+.nav {
+  position: sticky;
+  top: 0;
+  background: rgba(247, 246, 250, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--superficie);
+  z-index: 10;
+}
+
+.nav-inner {
+  max-width: var(--ancho-max);
+  margin: 0 auto;
+  padding: 18px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.marca {
+  font-family: var(--titulos);
+  font-weight: 400;
+  font-size: 1.05rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--tinta);
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 28px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 0.92rem;
+  letter-spacing: 0.04em;
+  color: var(--tinta-suave);
+  text-decoration: none;
+  padding-bottom: 3px;
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.nav-links a:hover { color: var(--profundo); border-color: var(--acento); }
+
+/* ---------- Hero ---------- */
+
+.hero {
+  padding: 110px 0 90px;
+}
+
+.hero-cejilla {
+  font-size: 0.82rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--acento);
+  margin-bottom: 26px;
+}
+
+.hero h1 {
+  font-size: clamp(2.4rem, 6vw, 4rem);
+  margin-bottom: 30px;
+}
+
+.hero .tagline {
+  font-family: var(--titulos);
+  font-weight: 300;
+  font-size: clamp(1.25rem, 3vw, 1.7rem);
+  line-height: 1.5;
+  color: var(--profundo);
+  max-width: 640px;
+  margin-bottom: 38px;
+}
+
+.hero .tagline em {
+  font-style: normal;
+  border-bottom: 2px solid var(--acento);
+}
+
+.boton {
+  display: inline-block;
+  background: var(--tinta);
+  color: var(--fondo);
+  font-family: var(--cuerpo);
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  padding: 14px 32px;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.boton:hover { background: var(--profundo); }
+
+.boton-suave {
+  background: transparent;
+  color: var(--tinta);
+  border: 1px solid var(--acento);
+  margin-left: 12px;
+}
+
+.boton-suave:hover { background: var(--superficie); }
+
+/* ---------- Secciones ---------- */
+
+section { padding: 80px 0; }
+
+.titulo-seccion {
+  font-size: clamp(1.7rem, 4vw, 2.3rem);
+  margin-bottom: 16px;
+}
+
+.linea {
+  width: 56px;
+  height: 2px;
+  background: var(--acento);
+  border: none;
+  margin: 0 0 42px;
+}
+
+/* ---------- Quién soy ---------- */
+
+.quien-soy { background: var(--superficie); }
+
+.quien-soy p {
+  max-width: 720px;
+  font-size: 1.08rem;
+}
+
+/* ---------- Proyectos ---------- */
+
+.intro-proyectos {
+  max-width: 680px;
+  color: var(--tinta-suave);
+  margin-bottom: 48px;
+}
+
+.tarjetas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 28px;
+}
+
+.tarjeta {
+  background: #FFFFFF;
+  border: 1px solid var(--superficie);
+  border-radius: 4px;
+  padding: 36px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-decoration: none;
+  color: var(--tinta);
+  transition: transform 0.25s, border-color 0.25s;
+}
+
+.tarjeta:hover {
+  transform: translateY(-4px);
+  border-color: var(--acento);
+}
+
+.tarjeta h3 {
+  font-size: 1.35rem;
+  font-weight: 400;
+}
+
+.tarjeta p {
+  font-size: 0.97rem;
+  color: var(--tinta-suave);
+  flex-grow: 1;
+}
+
+/* Sello distintivo: los dos mundos de cada caso */
+.dos-mundos {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--acento);
+}
+
+.dos-mundos span::after {
+  content: "";
+}
+
+.dos-mundos .puente {
+  color: var(--profundo);
+  font-size: 0.9rem;
+}
+
+.tarjeta .leer {
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  color: var(--profundo);
+}
+
+/* ---------- Contacto ---------- */
+
+.contacto { background: var(--superficie); }
+
+.contacto-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 56px;
+  align-items: start;
+}
+
+.contacto p { max-width: 420px; color: var(--tinta-suave); }
+
+.contacto .boton { margin-top: 24px; }
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.formulario label {
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--profundo);
+  display: block;
+  margin-bottom: 6px;
+}
+
+.formulario input,
+.formulario textarea {
+  width: 100%;
+  background: var(--fondo);
+  border: 1px solid transparent;
+  border-radius: 2px;
+  padding: 13px 14px;
+  font-family: var(--cuerpo);
+  font-size: 0.98rem;
+  color: var(--tinta);
+  transition: border-color 0.2s;
+}
+
+.formulario input:focus,
+.formulario textarea:focus {
+  border-color: var(--acento);
+  outline: none;
+}
+
+.formulario textarea { min-height: 130px; resize: vertical; }
+
+/* ---------- Pie ---------- */
+
+footer {
+  padding: 36px 0;
+  border-top: 1px solid var(--superficie);
+}
+
+.pie-inner {
+  max-width: var(--ancho-max);
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  font-size: 0.88rem;
+  color: var(--tinta-suave);
+}
+
+.pie-inner a { color: var(--profundo); text-decoration: none; }
+.pie-inner a:hover { text-decoration: underline; }
+
+/* ---------- Animación de entrada (respeta reduced motion) ---------- */
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero > .contenedor > * {
+    opacity: 0;
+    transform: translateY(14px);
+    animation: aparecer 0.7s ease forwards;
+  }
+  .hero > .contenedor > *:nth-child(2) { animation-delay: 0.12s; }
+  .hero > .contenedor > *:nth-child(3) { animation-delay: 0.24s; }
+  .hero > .contenedor > *:nth-child(4) { animation-delay: 0.36s; }
+
+  @keyframes aparecer {
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
+
+/* ---------- Responsivo ---------- */
+
+@media (max-width: 760px) {
+  .hero { padding: 70px 0 60px; }
+  section { padding: 60px 0; }
+  .contacto-grid { grid-template-columns: 1fr; gap: 40px; }
+  .nav-links { gap: 18px; }
+  .nav-links a { font-size: 0.85rem; }
+  .boton-suave { margin-left: 0; margin-top: 12px; }
+}
