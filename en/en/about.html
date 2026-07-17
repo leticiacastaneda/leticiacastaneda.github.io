@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — Leticia Castañeda</title>
+  <meta name="description" content="Pedagogue and instructional design specialist with 15 years of experience in global manufacturing and the tequila industry.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400&family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+
+  <style>
+    .sobre-hero { padding: 90px 0 70px; }
+
+    .sobre-grid {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .foto-columna { display: flex; flex-direction: column; gap: 20px; }
+
+    .foto-marco {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      overflow: hidden;
+      border-radius: 4px;
+      background: var(--superficie);
+    }
+
+    .foto-marco img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      filter: grayscale(15%);
+      transition: filter 0.4s;
+    }
+
+    .foto-marco img:hover { filter: grayscale(0%); }
+
+    .datos-rapidos { display: flex; flex-direction: column; gap: 10px; }
+
+    .dato {
+      font-size: 0.88rem;
+      color: var(--tinta-suave);
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      line-height: 1.5;
+    }
+
+    .dato-etiqueta {
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--acento);
+      white-space: nowrap;
+      padding-top: 1px;
+    }
+
+    .bio-texto h2 {
+      font-size: clamp(1.9rem, 4vw, 2.6rem);
+      margin-bottom: 10px;
+    }
+
+    .bio-texto .subtitulo {
+      font-size: 1.05rem;
+      color: var(--acento);
+      letter-spacing: 0.06em;
+      margin-bottom: 36px;
+    }
+
+    .bio-texto p { margin-bottom: 22px; max-width: 640px; }
+    .bio-texto p:last-child { margin-bottom: 0; }
+
+    .herramientas { background: var(--superficie); }
+
+    .categorias {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 28px;
+      margin-top: 42px;
+    }
+
+    .categoria {
+      background: var(--fondo);
+      border-radius: 4px;
+      padding: 28px 26px;
+      border: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+
+    .categoria:hover { border-color: var(--acento); }
+
+    .categoria h3 {
+      font-size: 0.82rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--acento);
+      margin-bottom: 16px;
+    }
+
+    .lista-tools { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+
+    .lista-tools li {
+      font-size: 0.97rem;
+      color: var(--tinta-suave);
+      padding-left: 14px;
+      position: relative;
+    }
+
+    .lista-tools li::before { content: "·"; position: absolute; left: 0; color: var(--acento); }
+
+    .lista-tools li em {
+      font-style: normal;
+      font-size: 0.82rem;
+      color: var(--acento);
+      opacity: 0.8;
+    }
+
+    .formacion { padding: 80px 0; }
+
+    .linea-tiempo {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-top: 42px;
+      max-width: 760px;
+    }
+
+    .linea-item {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 32px;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--superficie);
+    }
+
+    .linea-item:last-child { border-bottom: none; }
+
+    .linea-institucion {
+      font-size: 0.82rem;
+      letter-spacing: 0.06em;
+      color: var(--acento);
+      line-height: 1.5;
+      padding-top: 2px;
+    }
+
+    .linea-detalle h4 {
+      font-family: var(--titulos);
+      font-weight: 400;
+      font-size: 1.05rem;
+      margin-bottom: 4px;
+      color: var(--tinta);
+    }
+
+    .linea-detalle p {
+      font-size: 0.92rem;
+      color: var(--tinta-suave);
+      line-height: 1.6;
+    }
+
+    .podcast-seccion { background: var(--superficie); padding: 80px 0; }
+
+    .podcast-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 56px;
+      align-items: center;
+    }
+
+    .podcast-texto h2 { margin-bottom: 10px; }
+
+    .podcast-texto p {
+      color: var(--tinta-suave);
+      margin-top: 16px;
+      max-width: 420px;
+    }
+
+    .spotify-embed { border-radius: 12px; overflow: hidden; }
+
+    .btn-idioma {
+      font-family: var(--titulos);
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      color: var(--tinta-suave);
+      border: 1px solid var(--acento);
+      border-radius: 2px;
+      padding: 4px 10px;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+      white-space: nowrap;
+    }
+
+    .btn-idioma:hover {
+      background: var(--acento);
+      color: var(--fondo);
+    }
+
+    @media (max-width: 760px) {
+      .sobre-grid { grid-template-columns: 1fr; gap: 36px; }
+      .foto-marco { aspect-ratio: 1 / 1; max-width: 220px; }
+      .podcast-grid { grid-template-columns: 1fr; gap: 36px; }
+      .sobre-hero { padding: 60px 0 50px; }
+      .linea-item { grid-template-columns: 1fr; gap: 6px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============ NAVIGATION ============ -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="marca" href="index.html">Leticia Castañeda</a>
+      <ul class="nav-links">
+        <li><a href="index.html#projects">Projects</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+      <a class="btn-idioma" href="../sobre-mi.html">ES</a>
+    </div>
+  </nav>
+
+  <!-- ============ HERO + BIO ============ -->
+  <section class="sobre-hero">
+    <div class="contenedor">
+      <div class="sobre-grid">
+
+        <div class="foto-columna">
+          <div class="foto-marco">
+            <img src="../Leticia_C.jpg" alt="Leticia Castañeda, pedagogue and instructional designer">
+          </div>
+          <div class="datos-rapidos">
+            <div class="dato">
+              <span class="dato-etiqueta">Based in</span>
+              <span>Guadalajara, México</span>
+            </div>
+            <div class="dato">
+              <span class="dato-etiqueta">Languages</span>
+              <span>Spanish (native) · English (professional)</span>
+            </div>
+            <div class="dato">
+              <span class="dato-etiqueta">Experience</span>
+              <span>15 years in educational and corporate settings</span>
+            </div>
+            <div class="dato">
+              <span class="dato-etiqueta">Toastmasters</span>
+              <span>Advanced Communicator &amp; Leader · 10 years</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bio-texto">
+          <h2>Leticia Castañeda</h2>
+          <p class="subtitulo">Pedagogue · Instructional Design · Organizational Development</p>
+
+          <p>
+            I started at 18 in an English school, with no experience and a lot of
+            curiosity. That's where I discovered that teaching isn't about transferring
+            information — it's about provoking something in another person. That conviction
+            has guided every decision in my career since.
+          </p>
+
+          <p>
+            Pedagogy took me first through university: as a student, as an intern in
+            the library and educational innovation centers, and then behind the scenes
+            redesigning the curriculum of two undergraduate programs. The next chapter
+            was the corporate world — and with it, a revelation: organizations invest
+            enormously in training, but few stop to ask whether their people are actually
+            learning. That gap — between what's taught and what's learned — became my
+            territory. I've spent eight years working within it, across industries as
+            different as global manufacturing and the tequila industry.
+          </p>
+
+          <p>
+            In all those contexts, instructional design has been my core tool. I don't
+            understand it as a linear process of producing materials — I understand it
+            as a creative problem: who will learn this, what do they need to transform,
+            and what's the most honest and effective way to get there?
+          </p>
+
+          <p>
+            Sometimes that means a digital ecosystem of 150 curated resources for senior
+            leaders. Other times it means turning a company's Code of Ethics — a document
+            nobody read — into a Jumanji-style game that got 1,500 people to read it,
+            understand it, and actually enjoy it. The format is always secondary. The
+            question that matters is whether something really changed afterward.
+          </p>
+
+          <p>
+            I work with multiple methodologies — ADDIE, Design Thinking, accelerated
+            learning, Flipped Classroom, behaviorism, cognitivism, connectivism — not
+            out of eclecticism, but because pedagogy can't be rigid: it adapts to who's
+            learning. Right now I'm in a debate that fascinates me: whether Bloom's
+            Taxonomy needs updating in light of artificial intelligence's influence on
+            younger generations. That tension between the established and the emerging
+            is, for me, where the most interesting work in this field lives.
+          </p>
+
+          <p>
+            What people tell me after going through my programs is that something shifts —
+            a perspective changes, a decision gets made, a phrase sticks. A manager who
+            still uses an idea from one of my sessions months later. A colleague who, after
+            a course on decision-making, called back her recruiters and accepted a job offer
+            she'd been putting off. Those moments aren't something I chase — they arrive.
+            And when they do, they remind me why I chose this path and why I can't imagine
+            being anywhere else.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TOOLS & SKILLS ============ -->
+  <section class="herramientas">
+    <div class="contenedor">
+      <h2 class="titulo-seccion">Tools &amp; skills</h2>
+      <hr class="linea">
+
+      <div class="categorias">
+
+        <div class="categoria">
+          <h3>Instructional design</h3>
+          <ul class="lista-tools">
+            <li>Articulate 360</li>
+            <li>Genially</li>
+            <li>Adobe Captivate <em>earlier versions</em></li>
+            <li>Hot Potatoes <em>SCORM packaging</em></li>
+            <li>Moodle</li>
+            <li>SAP SuccessFactors LMS</li>
+            <li>Workday LMS</li>
+          </ul>
+        </div>
+
+        <div class="categoria">
+          <h3>Productivity &amp; design</h3>
+          <ul class="lista-tools">
+            <li>Microsoft 365: Word, PowerPoint, Excel, Visio, Forms, Clipchamp</li>
+            <li>Google Workspace: Docs, Slides, Sheets, Forms</li>
+            <li>Canva</li>
+            <li>Powtoon · Moovly <em>animated video</em></li>
+            <li>Audacity <em>audio editing</em></li>
+          </ul>
+        </div>
+
+        <div class="categoria">
+          <h3>Platforms &amp; systems</h3>
+          <ul class="lista-tools">
+            <li>SAP SuccessFactors <em>ERP</em></li>
+            <li>Workday <em>ERP</em></li>
+            <li>SharePoint</li>
+            <li>Google Sites · Wix · GitHub Pages</li>
+            <li>SurveyMonkey · JotForm</li>
+          </ul>
+        </div>
+
+        <div class="categoria">
+          <h3>Artificial intelligence</h3>
+          <ul class="lista-tools">
+            <li>Claude · ChatGPT · Gemini</li>
+            <li>Copilot · Perplexity</li>
+            <li>Ongoing exploration <em>of new platforms</em></li>
+          </ul>
+        </div>
+
+        <div class="categoria">
+          <h3>Communication &amp; facilitation</h3>
+          <ul class="lista-tools">
+            <li>Toastmasters <em>Advanced Communicator &amp; Leader</em></li>
+            <li>In-person and virtual facilitation</li>
+            <li>Podcast <em>AI-produced</em></li>
+            <li>Public speaking for executive audiences</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EDUCATION ============ -->
+  <section class="formacion">
+    <div class="contenedor">
+      <h2 class="titulo-seccion">Education &amp; training</h2>
+      <hr class="linea">
+
+      <div class="linea-tiempo">
+
+        <div class="linea-item">
+          <span class="linea-institucion">Universidad Panamericana · Guadalajara</span>
+          <div class="linea-detalle">
+            <h4>B.A. in Pedagogy and Educational Innovation</h4>
+            <p>My foundational training — it defines how I design, analyze, and evaluate learning experiences.</p>
+          </div>
+        </div>
+
+        <div class="linea-item">
+          <span class="linea-institucion">Metta Challenge Coaching · Guadalajara</span>
+          <div class="linea-detalle">
+            <h4>Neurocoaching certification</h4>
+            <p>Neuroscience tools applied to people development and designing conversations for change.</p>
+          </div>
+        </div>
+
+        <div class="linea-item">
+          <span class="linea-institucion">Inspiring Talent · ICF certified</span>
+          <div class="linea-detalle">
+            <h4>Team coaching</h4>
+            <p>Program with faculty certified by the International Coaching Federation, focused on collective dynamics and group facilitation.</p>
+          </div>
+        </div>
+
+        <div class="linea-item">
+          <span class="linea-institucion">GROW Incubadora de mentes creativas</span>
+          <div class="linea-detalle">
+            <h4>Accelerated learning certification</h4>
+            <p>Methodologies for designing high-impact learning experiences in less time.</p>
+          </div>
+        </div>
+
+        <div class="linea-item">
+          <span class="linea-institucion">Adrian Cottin</span>
+          <div class="linea-detalle">
+            <h4>Accelerated learning for virtual facilitation</h4>
+            <p>Specialization in synchronous digital environments: dynamic design, group management, and on-screen engagement.</p>
+          </div>
+        </div>
+
+        <div class="linea-item">
+          <span class="linea-institucion">Tecnológico de Monterrey</span>
+          <div class="linea-detalle">
+            <h4>AI in Education certification</h4>
+            <p>Applications of artificial intelligence in instructional design, facilitation, and educational content production.</p>
+          </div>
+        </div>
+
+        <div class="linea-item">
+          <span class="linea-institucion">Brandhome</span>
+          <div class="linea-detalle">
+            <h4>Marketing diploma</h4>
+            <p>Foundations in persuasive communication that now inform how I design experiences with narrative and impact.</p>
+          </div>
+        </div>
+
+        <div class="linea-item">
+          <span class="linea-institucion">Toastmasters International</span>
+          <div class="linea-detalle">
+            <h4>Advanced Communicator &amp; Leader</h4>
+            <p>Ten years of continuous practice in public speaking, leadership, and facilitation. Recognized as Advanced Communicator and Advanced Leader.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PODCAST ============ -->
+  <section class="podcast-seccion">
+    <div class="contenedor">
+      <div class="podcast-grid">
+
+        <div class="podcast-texto">
+          <p class="hero-cejilla">You can also find me here</p>
+          <h2 class="titulo-seccion">Kilometraje Corporativo</h2>
+          <p>
+            A podcast about organizational culture: that fascinating gap between
+            what companies say and what they actually do. Produced entirely
+            with artificial intelligence tools.
+          </p>
+          <br>
+          <a class="boton boton-suave"
+             href="https://open.spotify.com/show/7cbsrFc60LjgTQuLOnTyHB"
+             target="_blank" rel="noopener">
+            Listen on Spotify
+          </a>
+        </div>
+
+        <div class="spotify-embed">
+          <iframe
+            src="https://open.spotify.com/embed/show/7cbsrFc60LjgTQuLOnTyHB?utm_source=generator&theme=0"
+            width="100%"
+            height="352"
+            frameborder="0"
+            allowfullscreen=""
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy">
+          </iframe>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer>
+    <div class="pie-inner">
+      <span>© 2026 Leticia Castañeda</span>
+      <a href="https://open.spotify.com/show/7cbsrFc60LjgTQuLOnTyHB"
+         target="_blank" rel="noopener">Kilometraje Corporativo · Podcast</a>
+    </div>
+  </footer>
+
+</body>
+</html>
