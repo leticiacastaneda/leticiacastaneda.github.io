@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Internal instructor training — Leticia Castañeda</title>
+  <meta name="description" content="Case study: internal instructor training in global manufacturing and the tequila industry — rescue, design from scratch, and redesign under constraint.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400&family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+
+  <style>
+    .caso-hero { padding: 90px 0 60px; }
+    .caso-cejilla { font-size: 0.82rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--acento); margin-bottom: 22px; }
+    .caso-hero h1 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 24px; max-width: 760px; }
+    .caso-tesis { font-size: clamp(1.1rem, 2.4vw, 1.3rem); color: var(--tinta-suave); max-width: 680px; line-height: 1.65; }
+    .meta-caso { display: flex; gap: 36px; flex-wrap: wrap; margin-top: 40px; padding-top: 32px; border-top: 1px solid var(--superficie); }
+    .meta-item .meta-etiqueta { font-size: 0.76rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--acento); display: block; margin-bottom: 4px; }
+    .meta-item .meta-valor { font-size: 0.95rem; color: var(--tinta); }
+    .capitulo { padding: 70px 0; }
+    .capitulo.fondo-suave { background: var(--superficie); }
+    .capitulo-numero { font-size: 0.82rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--acento); margin-bottom: 6px; }
+    .capitulo h2 { font-size: clamp(1.5rem, 3.4vw, 2rem); margin-bottom: 36px; max-width: 640px; }
+    .timeline { position: relative; padding-left: 30px; max-width: 720px; }
+    .paso-item { position: relative; }
+    .paso-conector { position: absolute; left: -22px; top: 34px; width: 1.5px; background: var(--acento); opacity: 0.4; }
+    .paso-punto { position: absolute; left: -30px; top: 14px; width: 14px; height: 14px; border-radius: 50%; background: var(--fondo); border: 2.5px solid var(--acento); z-index: 1; }
+    .fondo-suave .paso-punto { background: var(--superficie); }
+    .paso-boton { display: flex; align-items: center; justify-content: space-between; gap: 16px; width: 100%; text-align: left; background: #FFFFFF; border: 1px solid transparent; border-radius: 4px; cursor: pointer; padding: 18px 20px; font-family: var(--cuerpo); transition: border-color 0.2s; }
+    .fondo-suave .paso-boton { background: var(--fondo); }
+    .paso-boton:hover { border-color: var(--acento); }
+    .paso-titulo { font-size: 1rem; font-weight: 500; color: var(--tinta); }
+    .paso-accion { display: flex; align-items: center; gap: 6px; font-size: 0.82rem; color: var(--profundo); flex-shrink: 0; white-space: nowrap; }
+    .paso-flecha { display: inline-block; transition: transform 0.2s; }
+    .paso-panel { max-height: 0; overflow: hidden; transition: max-height 0.25s ease; }
+    .paso-panel p { font-size: 0.95rem; line-height: 1.65; color: var(--tinta-suave); margin: 14px 4px 4px; }
+    .cierre { padding: 80px 0; }
+    .cierre-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; margin: 40px 0 48px; }
+    .cierre-tarjeta { background: var(--superficie); border-radius: 4px; padding: 30px 28px; }
+    .cierre-tarjeta .cejilla-mini { font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--acento); margin-bottom: 14px; }
+    .cierre-tarjeta p { font-size: 0.97rem; color: var(--tinta-suave); line-height: 1.65; }
+    .cierre-reflexion { max-width: 700px; font-size: 1.05rem; line-height: 1.75; border-left: 3px solid var(--acento); padding-left: 20px; }
+    .nav-casos { padding: 50px 0 80px; border-top: 1px solid var(--superficie); }
+    .nav-casos-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
+    .nav-caso-link { text-decoration: none; color: var(--tinta); }
+    .nav-caso-link .etiqueta { font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--acento); display: block; margin-bottom: 6px; }
+    .nav-caso-link .titulo-nav { font-family: var(--titulos); font-size: 1.3rem; font-weight: 300; }
+    .nav-caso-link:hover .titulo-nav { color: var(--profundo); }
+    .btn-idioma { font-family: var(--titulos); font-size: 0.78rem; letter-spacing: 0.12em; color: var(--tinta-suave); border: 1px solid var(--acento); border-radius: 2px; padding: 4px 10px; text-decoration: none; transition: background 0.2s, color 0.2s; white-space: nowrap; }
+    .btn-idioma:hover { background: var(--acento); color: var(--fondo); }
+    @media (max-width: 760px) { .caso-hero { padding: 60px 0 40px; } .capitulo { padding: 50px 0; } .cierre-grid { grid-template-columns: 1fr; } .meta-caso { gap: 24px; } .nav-casos-inner { flex-direction: column; align-items: flex-start; } }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="marca" href="index.html">Leticia Castañeda</a>
+      <ul class="nav-links">
+        <li><a href="index.html#projects">Projects</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+      <a class="btn-idioma" href="../instructores.html">ES</a>
+    </div>
+  </nav>
+
+  <header class="caso-hero">
+    <div class="contenedor">
+      <p class="caso-cejilla">Case study · Internal instructor training</p>
+      <h1>Two programs, one conviction</h1>
+      <p class="caso-tesis">
+        That an organization's knowledge shouldn't depend on a single person — that's
+        the promise of a good internal instructor program. In global manufacturing I
+        learned it by rescuing a program that was slowly dying. In the tequila industry
+        I applied it by building one from my own pedagogical judgment.
+      </p>
+      <div class="meta-caso">
+        <div class="meta-item">
+          <span class="meta-etiqueta">Industries</span>
+          <span class="meta-valor">Global manufacturing · Tequila industry</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-etiqueta">My role</span>
+          <span class="meta-valor">Instructional design · Program management · Facilitation</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-etiqueta">Scope</span>
+          <span class="meta-valor">100+ instructors trained · Program documented institutionally</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="capitulo">
+    <div class="contenedor">
+      <p class="capitulo-numero">Chapter 1 · Global manufacturing</p>
+      <h2>From a fading program to an institutional project</h2>
+      <div class="timeline" id="timeline-1"></div>
+    </div>
+  </section>
+
+  <section class="capitulo fondo-suave">
+    <div class="contenedor">
+      <p class="capitulo-numero">Chapter 2 · Tequila industry</p>
+      <h2>Design from scratch, adapt without giving in</h2>
+      <div class="timeline" id="timeline-2"></div>
+    </div>
+  </section>
+
+  <section class="cierre">
+    <div class="contenedor">
+      <h2 class="titulo-seccion">What I learned crossing both worlds</h2>
+      <hr class="linea">
+      <div class="cierre-grid">
+        <div class="cierre-tarjeta">
+          <p class="cejilla-mini">Global manufacturing</p>
+          <p>A program without a clear owner fades, no matter how good the original idea was. Traceability, leadership sponsorship, and defined roles aren't bureaucracy — they're what keeps a project alive.</p>
+        </div>
+        <div class="cierre-tarjeta">
+          <p class="cejilla-mini">Tequila industry</p>
+          <p>When operations ask for less, the answer isn't to give in — it's to redesign. The time constraint was what pushed me to make better use of available resources and apply a methodology that turned out to be more effective than the original format.</p>
+        </div>
+      </div>
+      <p class="cierre-reflexion">
+        In both contexts, the internal instructor role doesn't sustain itself. It needs
+        design, accompaniment, feedback, and a standard to aspire to. My work in both
+        cases was to build that standard — and make sure it was documented to outlast
+        my own tenure.
+      </p>
+    </div>
+  </section>
+
+  <section class="nav-casos">
+    <div class="contenedor">
+      <div class="nav-casos-inner">
+        <a class="nav-caso-link" href="competencias.html">
+          <span class="etiqueta">← Previous case</span>
+          <span class="titulo-nav">Competency models</span>
+        </a>
+        <a class="nav-caso-link" href="onboarding.html">
+          <span class="etiqueta">Next case →</span>
+          <span class="titulo-nav">Onboarding</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="pie-inner">
+      <span>© 2026 Leticia Castañeda</span>
+      <a href="https://open.spotify.com/show/7cbsrFc60LjgTQuLOnTyHB" target="_blank" rel="noopener">Kilometraje Corporativo · Podcast</a>
+    </div>
+  </footer>
+
+  <script>
+    const datos = {
+      "timeline-1": [
+        { titulo: "An inherited program with no context", detalle: "In my first quarter, I was handed a presentation to 'update' with no further explanation. Only when I opened it did I discover it was an internal instructor training program. I updated it, facilitated it at a site, and without anyone formally explaining it to me, the program became mine to manage." },
+        { titulo: "Investigating the origin and diagnosing the situation", detalle: "When my manager started asking me about metrics and award events I didn't know existed, I began digging. I found a procedure documenting more than twenty people who had managed the program over the years. It existed, but no one was running it with any clarity: the SME figure had disappeared and the L&D area had lost active involvement." },
+        { titulo: "Rebuilding the process and roles", detalle: "I updated the documented process, redefined roles (instructors, area managers, L&D), and clarified scopes and profiles. The program went from something nobody understood to having traceability, metrics, and a formal record of internal courses delivered." },
+        { titulo: "Leadership sponsorship and points system", detalle: "I reactivated the compensation system with updated scales and a negotiated budget. I secured active sponsorship from area managers — without that, no instructor program survives. Over four years: more than a hundred colleagues trained as internal instructors, across all areas of the operation." },
+        { titulo: "English Conversation Club: my own initiative", detalle: "I proposed and designed the English Conversation Club to support colleagues who were too shy to speak English in a multinational company. I developed the methodology, the diagnostic to select participants and potential instructors, and the train-the-trainers for the club's facilitators. It worked so well it was officially documented as an extension of the internal instructor program procedure." }
+      ],
+      "timeline-2": [
+        { titulo: "Diagnosis: instructors with no real training", detalle: "There were internal instructors, but their courses lacked structure and planning. Both employees and managers were asking for the same thing: more practice, less theory. That diagnosis was my starting point." },
+        { titulo: "Design from scratch: pedagogical foundations and practice", detalle: "I taught from the basics of the teaching-learning process through educational planning criteria and group management. Twenty hours of training plus the time each instructor spent implementing their own course, with group feedback as the central learning tool." },
+        { titulo: "Two generations trained", detalle: "The first two cohorts — around forty people — came out well prepared. One instructor shared that she had developed the ability to tell when a course is well planned and when it isn't. That's applied metacognition: the most sophisticated outcome a trainer development program can achieve." },
+        { titulo: "Operations asks to compress to 4 hours", detalle: "Internal restructuring and tighter schedules led management to request reducing the program to four hours for four simultaneous groups. Four hours don't train anyone — another solution was needed." },
+        { titulo: "Redesign with Flipped Classroom", detalle: "Instead of giving in, I redesigned using Flipped Classroom methodology: theory assigned through LinkedIn Learning (licenses already paid for and underused), team work before each session, and in-person time dedicated exclusively to practice and group feedback. This new format reached 40 participants in the final version of the program." }
+      ]
+    };
+
+    function construirTimeline(contenedorId, pasos) {
+      const cont = document.getElementById(contenedorId);
+      pasos.forEach(function(p, i) {
+        const esUltimo = i === pasos.length - 1;
+        const item = document.createElement("div");
+        item.className = "paso-item";
+        item.style.marginBottom = esUltimo ? "0" : "16px";
+        item.innerHTML =
+          (!esUltimo ? '<div class="paso-conector" style="bottom:-16px;"></div>' : '') +
+          '<div class="paso-punto"></div>' +
+          '<button class="paso-boton" data-cont="' + contenedorId + '" data-i="' + i + '">' +
+            '<span class="paso-titulo">' + p.titulo + '</span>' +
+            '<span class="paso-accion"><span class="palabra-accion" data-cont="' + contenedorId + '" data-i="' + i + '">see more</span><span class="paso-flecha flecha-accion" data-cont="' + contenedorId + '" data-i="' + i + '">↓</span></span>' +
+          '</button>' +
+          '<div class="paso-panel panel-detalle" data-cont="' + contenedorId + '" data-i="' + i + '"><p>' + p.detalle + '</p></div>';
+        cont.appendChild(item);
+      });
+    }
+
+    function alternarPaso(contId, i) {
+      const panel = document.querySelector('.panel-detalle[data-cont="' + contId + '"][data-i="' + i + '"]');
+      const flecha = document.querySelector('.flecha-accion[data-cont="' + contId + '"][data-i="' + i + '"]');
+      const palabra = document.querySelector('.palabra-accion[data-cont="' + contId + '"][data-i="' + i + '"]');
+      const abierto = panel.style.maxHeight && panel.style.maxHeight !== "0px";
+      if (abierto) { panel.style.maxHeight = "0px"; flecha.style.transform = "rotate(0deg)"; palabra.textContent = "see more"; }
+      else { panel.style.maxHeight = panel.scrollHeight + 40 + "px"; flecha.style.transform = "rotate(180deg)"; palabra.textContent = "see less"; }
+    }
+
+    construirTimeline("timeline-1", datos["timeline-1"]);
+    construirTimeline("timeline-2", datos["timeline-2"]);
+    document.querySelectorAll(".paso-boton").forEach(function(btn) { btn.addEventListener("click", function() { alternarPaso(this.dataset.cont, this.dataset.i); }); });
+    setTimeout(function() { alternarPaso("timeline-1", "0"); alternarPaso("timeline-2", "0"); }, 50);
+  </script>
+</body>
+</html>
