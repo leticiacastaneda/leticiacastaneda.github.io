@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Competency models — Leticia Castañeda</title>
+  <meta name="description" content="Case study: competency model design in global manufacturing and the tequila industry.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400&family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+
+  <style>
+    .caso-hero { padding: 90px 0 60px; }
+    .caso-cejilla { font-size: 0.82rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--acento); margin-bottom: 22px; }
+    .caso-hero h1 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 24px; max-width: 760px; }
+    .caso-tesis { font-size: clamp(1.1rem, 2.4vw, 1.3rem); color: var(--tinta-suave); max-width: 680px; line-height: 1.65; }
+    .meta-caso { display: flex; gap: 36px; flex-wrap: wrap; margin-top: 40px; padding-top: 32px; border-top: 1px solid var(--superficie); }
+    .meta-item .meta-etiqueta { font-size: 0.76rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--acento); display: block; margin-bottom: 4px; }
+    .meta-item .meta-valor { font-size: 0.95rem; color: var(--tinta); }
+    .capitulo { padding: 70px 0; }
+    .capitulo.fondo-suave { background: var(--superficie); }
+    .capitulo-numero { font-size: 0.82rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--acento); margin-bottom: 6px; }
+    .capitulo h2 { font-size: clamp(1.5rem, 3.4vw, 2rem); margin-bottom: 36px; max-width: 640px; }
+    .timeline { position: relative; padding-left: 30px; max-width: 720px; }
+    .paso-item { position: relative; }
+    .paso-conector { position: absolute; left: -22px; top: 34px; width: 1.5px; background: var(--acento); opacity: 0.4; }
+    .paso-punto { position: absolute; left: -30px; top: 14px; width: 14px; height: 14px; border-radius: 50%; background: var(--fondo); border: 2.5px solid var(--acento); z-index: 1; }
+    .fondo-suave .paso-punto { background: var(--superficie); }
+    .paso-boton { display: flex; align-items: center; justify-content: space-between; gap: 16px; width: 100%; text-align: left; background: #FFFFFF; border: 1px solid transparent; border-radius: 4px; cursor: pointer; padding: 18px 20px; font-family: var(--cuerpo); transition: border-color 0.2s; }
+    .fondo-suave .paso-boton { background: var(--fondo); }
+    .paso-boton:hover { border-color: var(--acento); }
+    .paso-titulo { font-size: 1rem; font-weight: 500; color: var(--tinta); }
+    .paso-accion { display: flex; align-items: center; gap: 6px; font-size: 0.82rem; color: var(--profundo); flex-shrink: 0; white-space: nowrap; }
+    .paso-flecha { display: inline-block; transition: transform 0.2s; }
+    .paso-panel { max-height: 0; overflow: hidden; transition: max-height 0.25s ease; }
+    .paso-panel p { font-size: 0.95rem; line-height: 1.65; color: var(--tinta-suave); margin: 14px 4px 4px; }
+    .cierre { padding: 80px 0; }
+    .cierre-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; margin: 40px 0 48px; }
+    .cierre-tarjeta { background: var(--superficie); border-radius: 4px; padding: 30px 28px; }
+    .cierre-tarjeta .cejilla-mini { font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--acento); margin-bottom: 14px; }
+    .cierre-tarjeta p { font-size: 0.97rem; color: var(--tinta-suave); line-height: 1.65; }
+    .cierre-reflexion { max-width: 700px; font-size: 1.05rem; line-height: 1.75; border-left: 3px solid var(--acento); padding-left: 20px; }
+    .nav-casos { padding: 50px 0 80px; border-top: 1px solid var(--superficie); }
+    .nav-casos-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
+    .nav-caso-link { text-decoration: none; color: var(--tinta); }
+    .nav-caso-link .etiqueta { font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--acento); display: block; margin-bottom: 6px; }
+    .nav-caso-link .titulo-nav { font-family: var(--titulos); font-size: 1.3rem; font-weight: 300; }
+    .nav-caso-link:hover .titulo-nav { color: var(--profundo); }
+    .btn-idioma { font-family: var(--titulos); font-size: 0.78rem; letter-spacing: 0.12em; color: var(--tinta-suave); border: 1px solid var(--acento); border-radius: 2px; padding: 4px 10px; text-decoration: none; transition: background 0.2s, color 0.2s; white-space: nowrap; }
+    .btn-idioma:hover { background: var(--acento); color: var(--fondo); }
+    @media (max-width: 760px) { .caso-hero { padding: 60px 0 40px; } .capitulo { padding: 50px 0; } .cierre-grid { grid-template-columns: 1fr; } .meta-caso { gap: 24px; } .nav-casos-inner { flex-direction: column; align-items: flex-start; } }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="marca" href="index.html">Leticia Castañeda</a>
+      <ul class="nav-links">
+        <li><a href="index.html#projects">Projects</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+      <a class="btn-idioma" href="../competencias.html">ES</a>
+    </div>
+  </nav>
+
+  <header class="caso-hero">
+    <div class="contenedor">
+      <p class="caso-cejilla">Case study · Competency models</p>
+      <h1>Two models, two worlds: inheriting a framework vs. building one from scratch</h1>
+      <p class="caso-tesis">
+        The same underlying problem — organizations needing to name and develop the skills
+        they expect from their people — solved in two radically different contexts. In one,
+        I executed and scaled an ambiguous corporate mandate. In the other, I participated
+        in the genesis of the model and built, from scratch, the entire system to bring it
+        to the organization.
+      </p>
+      <div class="meta-caso">
+        <div class="meta-item">
+          <span class="meta-etiqueta">Industries</span>
+          <span class="meta-valor">Global manufacturing · Tequila industry</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-etiqueta">My role</span>
+          <span class="meta-valor">Instructional design · Organizational development</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-etiqueta">Scope</span>
+          <span class="meta-valor">From Guadalajara to 3 countries · Live system in production</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="capitulo">
+    <div class="contenedor">
+      <p class="capitulo-numero">Chapter 1 · Global manufacturing</p>
+      <h2>From an empty PDF to a model that crossed three continents</h2>
+      <div class="timeline" id="timeline-1"></div>
+    </div>
+  </section>
+
+  <section class="capitulo fondo-suave">
+    <div class="contenedor">
+      <p class="capitulo-numero">Chapter 2 · Tequila industry</p>
+      <h2>From an ambiguous mandate to a complete development system</h2>
+      <div class="timeline" id="timeline-2"></div>
+    </div>
+  </section>
+
+  <section class="cierre">
+    <div class="contenedor">
+      <h2 class="titulo-seccion">What I learned crossing both worlds</h2>
+      <hr class="linea">
+      <div class="cierre-grid">
+        <div class="cierre-tarjeta">
+          <p class="cejilla-mini">Global manufacturing</p>
+          <p>I learned to scale. When a design works and is well documented, it travels — from Guadalajara to Chihuahua and Monterrey, and from there to teams in Asia and the United States. I also learned to train trainers: validating someone else's instructional design is a different skill from creating your own.</p>
+        </div>
+        <div class="cierre-tarjeta">
+          <p class="cejilla-mini">Tequila industry</p>
+          <p>I learned to build the method when none exists. Participating in the genesis of a model — not just implementing it — requires a different level of judgment: deciding which content deserves trust, which platform to use without prior experience, and how to turn a curriculum into an experience people actually want to go through.</p>
+        </div>
+      </div>
+      <p class="cierre-reflexion">
+        In both cases, the real constraint was never the budget — it was knowledge. In
+        manufacturing, I didn't know enough about competencies; I researched until I did.
+        In the tequila industry, I didn't know the technical platform the project needed;
+        I learned on the fly, with the help of artificial intelligence, under the same
+        time pressure any real operation imposes. The difference between a project that
+        stays an intention and one that actually reaches people is almost always a
+        willingness to learn what you don't yet know.
+      </p>
+    </div>
+  </section>
+
+  <section class="nav-casos">
+    <div class="contenedor">
+      <div class="nav-casos-inner">
+        <a class="nav-caso-link" href="index.html#projects">
+          <span class="etiqueta">← All projects</span>
+          <span class="titulo-nav">Projects</span>
+        </a>
+        <a class="nav-caso-link" href="instructores.html">
+          <span class="etiqueta">Next case →</span>
+          <span class="titulo-nav">Internal instructor training</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="pie-inner">
+      <span>© 2026 Leticia Castañeda</span>
+      <a href="https://open.spotify.com/show/7cbsrFc60LjgTQuLOnTyHB" target="_blank" rel="noopener">Kilometraje Corporativo · Podcast</a>
+    </div>
+  </footer>
+
+  <script>
+    const datos = {
+      "timeline-1": [
+        { titulo: "An empty model from corporate", detalle: "Corporate HQ in the US launched 5 institutional competencies with just a PDF, a promotional video, and a list of courses almost no one in Mexico could actually access. No budget, no translation, no implementation guide." },
+        { titulo: "5 institutional courses, built from scratch", detalle: "I raised my hand so our area could take ownership of the project. I designed the complete educational content: 5 courses of 1.5 hours each, built to work in both in-person and virtual formats, explaining from the ground up what a competency is and why it matters." },
+        { titulo: "Pandemic: redesigning on the fly", detalle: "The launch was planned as in-person, but the pandemic forced everything into a virtual format overnight. Teams recordings uploaded as courses were rejected by employees. I designed a podcast-style format with slides in the background: colleagues listened while working on their reports, ready to look at the screen when there was an important exercise." },
+        { titulo: "10 leadership courses and a team to lead", detalle: "The project grew to the next level: leadership competencies, 10 more courses. My role evolved from designing content to developing the people who designed it — I validated the instructional structure of my colleagues' work, reviewed the logical flow of each course, and we built activities together." },
+        { titulo: "From Guadalajara to Asia and the United States", detalle: "The model became the foundation for mapping team skill gaps and assigning courses. It scaled from Guadalajara to plants in Chihuahua and Monterrey. Then the Malaysia hub asked to learn the full method — I held daily sessions explaining each course while they taught me how to adapt examples and activities to their culture. Later, colleagues in the US came looking for the content to replicate it too." }
+      ],
+      "timeline-2": [
+        { titulo: "A diffuse model, no method", detalle: "The company had a solid sense of purpose and values, but the competency model was so undefined that each area invented its own. I worked alongside the OD management and the VP of HR to build, from the very beginning, 5 institutional competencies and 10 leadership competencies, fully aligned to purpose and values." },
+        { titulo: '"We know what we want, but not how — figure it out"', detalle: "Once the model was defined, the next challenge was mine: build the how from scratch. I designed evaluation surveys, presentations, workshops, report templates, and automation connecting Excel data to Word document generation — all of this just for the initial evaluation phase." },
+        { titulo: "Four constraints to solve at once", detalle: "Operations were at full capacity: no room to schedule in-person courses at sites. LinkedIn Learning licenses were going unused. Quality and practicality were both required. And there was no functioning LMS. The answer: self-managed asynchronous virtual learning, organized into 4 maturity levels per competency plus an inspirational module of best practices." },
+        { titulo: "Content curation with editorial judgment", detalle: "I went through the entire LinkedIn Learning catalog course by course, deciding what was worth including and at which maturity level it belonged. For supplementary readings and videos, I filtered only trusted sources — Harvard Business Review and authors the internal culture already recognized and sought out — discarding anything without solid backing." },
+        { titulo: "Learning a new platform under real pressure", detalle: "With content ready, there was nowhere to put it: no LMS, and a basic Drive folder would undermine the whole project's credibility. I found the right solution in SharePoint — but I didn't know how to use it. I decided to learn on the fly, with the help of artificial intelligence, while the operation kept demanding results. The outcome: a functional 150-page site with 4 maturity levels per competency, content adapted into Spanish, and a text-to-speech feature to support different learning styles." }
+      ]
+    };
+
+    function construirTimeline(contenedorId, pasos) {
+      const cont = document.getElementById(contenedorId);
+      pasos.forEach(function(p, i) {
+        const esUltimo = i === pasos.length - 1;
+        const item = document.createElement("div");
+        item.className = "paso-item";
+        item.style.marginBottom = esUltimo ? "0" : "16px";
+        item.innerHTML =
+          (!esUltimo ? '<div class="paso-conector" style="bottom:-16px;"></div>' : '') +
+          '<div class="paso-punto"></div>' +
+          '<button class="paso-boton" data-cont="' + contenedorId + '" data-i="' + i + '">' +
+            '<span class="paso-titulo">' + p.titulo + '</span>' +
+            '<span class="paso-accion"><span class="palabra-accion" data-cont="' + contenedorId + '" data-i="' + i + '">see more</span><span class="paso-flecha flecha-accion" data-cont="' + contenedorId + '" data-i="' + i + '">↓</span></span>' +
+          '</button>' +
+          '<div class="paso-panel panel-detalle" data-cont="' + contenedorId + '" data-i="' + i + '"><p>' + p.detalle + '</p></div>';
+        cont.appendChild(item);
+      });
+    }
+
+    function alternarPaso(contId, i) {
+      const panel = document.querySelector('.panel-detalle[data-cont="' + contId + '"][data-i="' + i + '"]');
+      const flecha = document.querySelector('.flecha-accion[data-cont="' + contId + '"][data-i="' + i + '"]');
+      const palabra = document.querySelector('.palabra-accion[data-cont="' + contId + '"][data-i="' + i + '"]');
+      const abierto = panel.style.maxHeight && panel.style.maxHeight !== "0px";
+      if (abierto) { panel.style.maxHeight = "0px"; flecha.style.transform = "rotate(0deg)"; palabra.textContent = "see more"; }
+      else { panel.style.maxHeight = panel.scrollHeight + 40 + "px"; flecha.style.transform = "rotate(180deg)"; palabra.textContent = "see less"; }
+    }
+
+    construirTimeline("timeline-1", datos["timeline-1"]);
+    construirTimeline("timeline-2", datos["timeline-2"]);
+    document.querySelectorAll(".paso-boton").forEach(function(btn) { btn.addEventListener("click", function() { alternarPaso(this.dataset.cont, this.dataset.i); }); });
+    setTimeout(function() { alternarPaso("timeline-1", "0"); alternarPaso("timeline-2", "0"); }, 50);
+  </script>
+</body>
+</html>
