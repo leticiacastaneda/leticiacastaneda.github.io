@@ -241,6 +241,23 @@
       .paso-titulo { font-size: 0.95rem; }
       .paso-accion .palabra-texto { display: none; }
     }
+  
+    .btn-idioma {
+      font-family: var(--titulos);
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      color: var(--tinta-suave);
+      border: 1px solid var(--acento);
+      border-radius: 2px;
+      padding: 4px 10px;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+      white-space: nowrap;
+    }
+    .btn-idioma:hover {
+      background: var(--acento);
+      color: var(--fondo);
+    }
   </style>
 </head>
 <body>
@@ -254,6 +271,7 @@
         <li><a href="sobre-mi.html">Sobre mí</a></li>
         <li><a href="index.html#contacto">Contacto</a></li>
       </ul>
+      <a class="btn-idioma" href="en/competencias.html">EN</a>
     </div>
   </nav>
 
