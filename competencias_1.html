@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modelos de competencias — Leticia Castañeda</title>
+  <meta name="description" content="Caso de estudio: diseño de modelos de competencias en dos industrias — manufactura global e industria tequilera.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400&family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    .caso-hero { padding: 90px 0 60px; }
+
+    .caso-cejilla {
+      font-size: 0.82rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--acento);
+      margin-bottom: 22px;
+    }
+
+    .caso-hero h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      margin-bottom: 24px;
+      max-width: 760px;
+    }
+
+    .caso-tesis {
+      font-size: clamp(1.1rem, 2.4vw, 1.3rem);
+      color: var(--tinta-suave);
+      max-width: 680px;
+      line-height: 1.65;
+    }
+
+    .meta-caso {
+      display: flex;
+      gap: 36px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+      padding-top: 32px;
+      border-top: 1px solid var(--superficie);
+    }
+
+    .meta-item .meta-etiqueta {
+      font-size: 0.76rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--acento);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .meta-item .meta-valor {
+      font-size: 0.95rem;
+      color: var(--tinta);
+    }
+
+    /* ---------- Capítulos ---------- */
+
+    .capitulo { padding: 70px 0; }
+    .capitulo.fondo-suave { background: var(--superficie); }
+
+    .capitulo-encabezado {
+      margin-bottom: 8px;
+    }
+
+    .capitulo-numero {
+      font-size: 0.82rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--acento);
+      margin-bottom: 6px;
+    }
+
+    .capitulo h2 {
+      font-size: clamp(1.5rem, 3.4vw, 2rem);
+      margin-bottom: 36px;
+      max-width: 640px;
+    }
+
+    /* ---------- Timeline vertical ---------- */
+
+    .timeline { position: relative; padding-left: 30px; max-width: 720px; }
+
+    .paso-item { position: relative; }
+
+    .paso-conector {
+      position: absolute;
+      left: -22px;
+      top: 34px;
+      width: 1.5px;
+      background: var(--acento);
+      opacity: 0.4;
+    }
+
+    .paso-punto {
+      position: absolute;
+      left: -30px;
+      top: 14px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--fondo);
+      border: 2.5px solid var(--acento);
+      z-index: 1;
+    }
+
+    .fondo-suave .paso-punto { background: var(--superficie); }
+
+    .paso-boton {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      width: 100%;
+      text-align: left;
+      background: #FFFFFF;
+      border: 1px solid transparent;
+      border-radius: 4px;
+      cursor: pointer;
+      padding: 18px 20px;
+      font-family: var(--cuerpo);
+      transition: border-color 0.2s;
+    }
+
+    .paso-boton:hover { border-color: var(--acento); }
+
+    .paso-titulo {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--tinta);
+    }
+
+    .paso-accion {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.82rem;
+      color: var(--profundo);
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+
+    .paso-flecha {
+      display: inline-block;
+      transition: transform 0.2s;
+      font-size: 0.9rem;
+    }
+
+    .paso-panel {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.25s ease;
+    }
+
+    .paso-panel p {
+      font-size: 0.95rem;
+      line-height: 1.65;
+      color: var(--tinta-suave);
+      margin: 14px 4px 4px;
+    }
+
+    /* ---------- Cierre comparativo ---------- */
+
+    .cierre { padding: 80px 0; }
+
+    .cierre-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+      margin: 40px 0 48px;
+    }
+
+    .cierre-tarjeta {
+      background: var(--superficie);
+      border-radius: 4px;
+      padding: 30px 28px;
+    }
+
+    .cierre-tarjeta .cejilla-mini {
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--acento);
+      margin-bottom: 14px;
+    }
+
+    .cierre-tarjeta p {
+      font-size: 0.97rem;
+      color: var(--tinta-suave);
+      line-height: 1.65;
+    }
+
+    .cierre-reflexion {
+      max-width: 700px;
+      font-size: 1.05rem;
+      line-height: 1.75;
+    }
+
+    /* ---------- Navegación entre casos ---------- */
+
+    .siguiente-caso {
+      padding: 50px 0 80px;
+      border-top: 1px solid var(--superficie);
+    }
+
+    .siguiente-caso a {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      text-decoration: none;
+      color: var(--tinta);
+      padding: 24px 0;
+    }
+
+    .siguiente-caso .etiqueta {
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--acento);
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .siguiente-caso .titulo-siguiente {
+      font-family: var(--titulos);
+      font-size: 1.4rem;
+      font-weight: 300;
+    }
+
+    /* ---------- Responsivo ---------- */
+
+    @media (max-width: 760px) {
+      .caso-hero { padding: 60px 0 40px; }
+      .capitulo { padding: 50px 0; }
+      .cierre-grid { grid-template-columns: 1fr; }
+      .meta-caso { gap: 24px; }
+      .paso-titulo { font-size: 0.95rem; }
+      .paso-accion .palabra-texto { display: none; }
+    }
+  
+    .btn-idioma {
+      font-family: var(--titulos);
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      color: var(--tinta-suave);
+      border: 1px solid var(--acento);
+      border-radius: 2px;
+      padding: 4px 10px;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+      white-space: nowrap;
+    }
+    .btn-idioma:hover {
+      background: var(--acento);
+      color: var(--fondo);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============ NAVEGACIÓN ============ -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="marca" href="index.html">Leticia Castañeda</a>
+      <ul class="nav-links">
+        <li><a href="index.html#proyectos">Proyectos</a></li>
+        <li><a href="sobre-mi.html">Sobre mí</a></li>
+        <li><a href="index.html#contacto">Contacto</a></li>
+      </ul>
+      <a class="btn-idioma" href="en/competencias.html">EN</a>
+    </div>
+  </nav>
+
+  <!-- ============ HERO DEL CASO ============ -->
+  <header class="caso-hero">
+    <div class="contenedor">
+      <p class="caso-cejilla">Caso de estudio · Modelos de competencias</p>
+      <h1>Dos modelos, dos mundos: cuando heredas un marco y cuando lo construyes desde cero</h1>
+      <p class="caso-tesis">
+        Un mismo problema de fondo — organizaciones que necesitan nombrar y desarrollar
+        las habilidades que esperan de su gente — resuelto en dos contextos radicalmente
+        distintos. En uno, ejecuté y escalé un mandato ambiguo de corporativo. En el otro,
+        participé en la génesis del modelo y construí, desde cero, todo el sistema para
+        llevarlo a la organización.
+      </p>
+
+      <div class="meta-caso">
+        <div class="meta-item">
+          <span class="meta-etiqueta">Industrias</span>
+          <span class="meta-valor">Manufactura global · Industria tequilera</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-etiqueta">Mi rol</span>
+          <span class="meta-valor">Diseño instruccional · Desarrollo organizacional</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-etiqueta">Alcance</span>
+          <span class="meta-valor">De Guadalajara a 3 países · Sistema vivo en producción</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ CAPÍTULO 1: MANUFACTURA GLOBAL ============ -->
+  <section class="capitulo">
+    <div class="contenedor">
+      <div class="capitulo-encabezado">
+        <p class="capitulo-numero">Capítulo 1 · Manufactura global</p>
+        <h2>De un PDF vacío a un modelo que cruzó tres continentes</h2>
+      </div>
+
+      <div class="timeline" id="timeline-1"></div>
+    </div>
+  </section>
+
+  <!-- ============ CAPÍTULO 2: INDUSTRIA TEQUILERA ============ -->
+  <section class="capitulo fondo-suave">
+    <div class="contenedor">
+      <div class="capitulo-encabezado">
+        <p class="capitulo-numero">Capítulo 2 · Industria tequilera</p>
+        <h2>De un mandato ambiguo a un sistema completo de desarrollo</h2>
+      </div>
+
+      <div class="timeline" id="timeline-2"></div>
+    </div>
+  </section>
+
+  <!-- ============ CIERRE COMPARATIVO ============ -->
+  <section class="cierre">
+    <div class="contenedor">
+      <h2 class="titulo-seccion">Lo que aprendí cruzando ambos mundos</h2>
+      <hr class="linea">
+
+      <div class="cierre-grid">
+        <div class="cierre-tarjeta">
+          <p class="cejilla-mini">Manufactura global</p>
+          <p>
+            Aprendí a escalar. Cuando un diseño funciona y se documenta bien, viaja:
+            de Guadalajara a Chihuahua, Monterrey, y de ahí a equipos en Asia y Estados
+            Unidos. También aprendí a formar formadores — validar la estructura didáctica
+            del trabajo de otras personas es una habilidad distinta a diseñar la propia.
+          </p>
+        </div>
+        <div class="cierre-tarjeta">
+          <p class="cejilla-mini">Industria tequilera</p>
+          <p>
+            Aprendí a construir el método cuando no existe. Participar en la génesis de
+            un modelo — no solo implementarlo — exige otro nivel de criterio: decidir qué
+            contenido merece confianza, qué plataforma usar sin tener experiencia previa
+            en ella, y cómo convertir una malla curricular en una experiencia que alguien
+            quiera recorrer.
+          </p>
+        </div>
+      </div>
+
+      <p class="cierre-reflexion">
+        En ambos casos, la restricción real nunca fue el presupuesto — fue el conocimiento.
+        En manufactura, no sabía de competencias; investigué hasta dominarlo. En la
+        tequilera, no sabía manejar la plataforma técnica que el proyecto necesitaba;
+        aprendí sobre la marcha, con apoyo de inteligencia artificial, bajo la misma
+        presión de tiempo que cualquier operación real impone. La diferencia entre un
+        proyecto que se queda en la intención y uno que llega a la gente está, casi
+        siempre, en la disposición a aprender lo que todavía no sabes.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ SIGUIENTE CASO ============ -->
+  <section class="siguiente-caso">
+    <div class="contenedor">
+      <a href="instructores.html">
+        <div>
+          <span class="etiqueta">Siguiente caso</span>
+          <span class="titulo-siguiente">Formación de instructores →</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ============ PIE ============ -->
+  <footer>
+    <div class="pie-inner">
+      <span>© 2026 Leticia Castañeda</span>
+      <a href="https://open.spotify.com/show/7cbsrFc60LjgTQuLOnTyHB" target="_blank" rel="noopener">Kilometraje Corporativo · Podcast</a>
+    </div>
+  </footer>
+
+  <!-- ============ DATOS Y LÓGICA DE LAS LÍNEAS DE TIEMPO ============ -->
+  <script>
+    const pasosCapitulo1 = [
+      {
+        titulo: "Modelo vacío de corporativo",
+        detalle: "Corporativo en EUA lanzó 5 competencias institucionales con solo un PDF, un video promocional y una lista de cursos a los que casi nadie en México tenía acceso real. No explicaba qué era una competencia ni cómo bajar la información al resto de la organización."
+      },
+      {
+        titulo: "5 cursos institucionales, desde cero",
+        detalle: "Levanté la mano para que mi área tomara responsabilidad sobre el proyecto. Diseñé el contenido educativo completo: 5 cursos de 1.5 horas, pensados para adaptarse tanto a formato presencial como virtual, explicando desde cero qué es una competencia y por qué importa."
+      },
+      {
+        titulo: "Pandemia: rediseño sobre la marcha",
+        detalle: "El lanzamiento se planeó presencial, pero la pandemia obligó a adaptarlo todo a un foro virtual de la noche a la mañana. Las grabaciones de Teams subidas como curso eran rechazadas por los empleados. Diseñé un formato tipo podcast con presentación de fondo: los colegas escuchaban el contenido mientras hacían sus reportes, atentos a la instrucción de voltear a la pantalla cuando había un ejercicio importante."
+      },
+      {
+        titulo: "10 cursos de liderazgo y un equipo a mi cargo",
+        detalle: "El proyecto creció al siguiente nivel: competencias de liderazgo, 10 cursos más. Aquí mi rol evolucionó de diseñar contenido a formar a quienes lo diseñaban — validaba la estructura didáctica de mis compañeras, revisaba la secuencia lógica de cada curso y construíamos juntas las actividades de cada sesión."
+      },
+      {
+        titulo: "De Guadalajara a Asia y Estados Unidos",
+        detalle: "El modelo se volvió insumo para mapear qué competencias necesitaba desarrollar cada equipo y qué cursos asignarles. Escaló de Guadalajara a las plantas de Chihuahua y Monterrey. Después, el centro de Malasia solicitó conocer el método completo — tuve sesiones diarias explicando cada curso mientras ellos me enseñaban cómo adaptar ejemplos y ejercicios a su cultura. Más tarde, colegas de Estados Unidos buscaron el contenido para replicarlo también."
+      }
+    ];
+
+    const pasosCapitulo2 = [
+      {
+        titulo: "Un modelo difuso, sin método",
+        detalle: "La empresa tenía propósito y valores institucionales sólidos, pero el modelo de competencias estaba tan poco definido que cada área inventaba las suyas. Trabajé junto con la gerencia de Desarrollo Organizacional y la vicepresidencia de Recursos Humanos para construir, desde la génesis, 5 competencias institucionales y 10 de liderazgo, totalmente alineadas a propósito y valores."
+      },
+      {
+        titulo: '"Así lo queremos, pero no sabemos cómo"',
+        detalle: "Una vez definido el modelo, el siguiente reto fue mío: construir el cómo desde cero. Diseñé encuestas de evaluación, presentaciones, talleres, plantillas de reportes, y automatización para conectar datos de Excel con generación de documentos en Word — todo esto, solo para la fase de evaluación inicial."
+      },
+      {
+        titulo: "Cuatro restricciones a resolver de golpe",
+        detalle: "La operación estaba a tope: no había forma de calendarizar cursos presenciales en sedes. Había licencias de LinkedIn Learning desaprovechadas. Me pidieron calidad y practicidad. Y no existía un LMS funcional. La respuesta fue diseñar aprendizaje virtual asincrónico y autogestionable, organizado en 4 niveles de madurez por competencia más un módulo inspirador de buenas prácticas."
+      },
+      {
+        titulo: "Curaduría de contenido con criterio editorial",
+        detalle: "Exploré curso por curso el catálogo completo de LinkedIn Learning para decidir qué servía y en qué nivel de madurez encajaba. Para lecturas y videos complementarios, filtré solo fuentes confiables — como Harvard Business Review y autores que la cultura interna ya reconocía y buscaba — descartando todo lo que no tuviera el respaldo o la calidad necesaria."
+      },
+      {
+        titulo: "Aprender una plataforma nueva, bajo presión real",
+        detalle: "Con el contenido listo, faltaba dónde mostrarlo: no había LMS, y un simple Drive le restaría toda credibilidad al proyecto. Encontré en SharePoint la solución correcta, pero no sabía usarlo. Decidí aprender sobre la marcha, con apoyo de inteligencia artificial, mientras la operación seguía exigiendo resultados. El resultado: un sitio funcional de 150 páginas con los 4 niveles de cada competencia, contenido adaptado al español, y función de lectura en voz alta para favorecer distintos estilos de aprendizaje."
+      }
+    ];
+
+    function construirTimeline(contenedorId, pasos) {
+      const cont = document.getElementById(contenedorId);
+      pasos.forEach((p, i) => {
+        const esUltimo = i === pasos.length - 1;
+        const item = document.createElement("div");
+        item.className = "paso-item";
+        item.style.marginBottom = esUltimo ? "0" : "16px";
+
+        item.innerHTML =
+          (!esUltimo ? '<div class="paso-conector" style="bottom:-16px;"></div>' : '') +
+          '<div class="paso-punto"></div>' +
+          '<button class="paso-boton" data-cont="' + contenedorId + '" data-i="' + i + '">' +
+            '<span class="paso-titulo">' + p.titulo + '</span>' +
+            '<span class="paso-accion">' +
+              '<span class="palabra-texto palabra-accion" data-cont="' + contenedorId + '" data-i="' + i + '">ver más</span>' +
+              '<span class="paso-flecha flecha-accion" data-cont="' + contenedorId + '" data-i="' + i + '">&#8595;</span>' +
+            '</span>' +
+          '</button>' +
+          '<div class="paso-panel panel-detalle" data-cont="' + contenedorId + '" data-i="' + i + '">' +
+            '<p>' + p.detalle + '</p>' +
+          '</div>';
+
+        cont.appendChild(item);
+      });
+    }
+
+    construirTimeline("timeline-1", pasosCapitulo1);
+    construirTimeline("timeline-2", pasosCapitulo2);
+
+    function alternarPaso(contId, i) {
+      const panel = document.querySelector('.panel-detalle[data-cont="' + contId + '"][data-i="' + i + '"]');
+      const flecha = document.querySelector('.flecha-accion[data-cont="' + contId + '"][data-i="' + i + '"]');
+      const palabra = document.querySelector('.palabra-accion[data-cont="' + contId + '"][data-i="' + i + '"]');
+      const abierto = panel.style.maxHeight && panel.style.maxHeight !== "0px";
+      if (abierto) {
+        panel.style.maxHeight = "0px";
+        flecha.style.transform = "rotate(0deg)";
+        palabra.textContent = "ver más";
+      } else {
+        panel.style.maxHeight = panel.scrollHeight + 40 + "px";
+        flecha.style.transform = "rotate(180deg)";
+        palabra.textContent = "ver menos";
+      }
+    }
+
+    document.querySelectorAll(".paso-boton").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        alternarPaso(this.dataset.cont, this.dataset.i);
+      });
+    });
+
+    setTimeout(function () {
+      alternarPaso("timeline-1", "0");
+      alternarPaso("timeline-2", "0");
+    }, 50);
+  </script>
+
+</body>
+</html>

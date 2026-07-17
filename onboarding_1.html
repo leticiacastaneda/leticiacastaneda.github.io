@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Onboarding — Leticia Castañeda</title>
+  <meta name="description" content="Caso de estudio: onboarding en manufactura global e industria tequilera — del sistema escalable a la experiencia a medida.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400&family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    .caso-hero { padding: 90px 0 60px; }
+
+    .caso-cejilla {
+      font-size: 0.82rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--acento);
+      margin-bottom: 22px;
+    }
+
+    .caso-hero h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      margin-bottom: 24px;
+      max-width: 760px;
+    }
+
+    .caso-tesis {
+      font-size: clamp(1.1rem, 2.4vw, 1.3rem);
+      color: var(--tinta-suave);
+      max-width: 680px;
+      line-height: 1.65;
+    }
+
+    .meta-caso {
+      display: flex;
+      gap: 36px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+      padding-top: 32px;
+      border-top: 1px solid var(--superficie);
+    }
+
+    .meta-item .meta-etiqueta {
+      font-size: 0.76rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--acento);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .meta-item .meta-valor {
+      font-size: 0.95rem;
+      color: var(--tinta);
+    }
+
+    /* ---------- Capítulos ---------- */
+
+    .capitulo { padding: 70px 0; }
+    .capitulo.fondo-suave { background: var(--superficie); }
+
+    .capitulo-numero {
+      font-size: 0.82rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--acento);
+      margin-bottom: 6px;
+    }
+
+    .capitulo h2 {
+      font-size: clamp(1.5rem, 3.4vw, 2rem);
+      margin-bottom: 36px;
+      max-width: 640px;
+    }
+
+    /* ---------- Timeline vertical ---------- */
+
+    .timeline { position: relative; padding-left: 30px; max-width: 720px; }
+
+    .paso-item { position: relative; }
+
+    .paso-conector {
+      position: absolute;
+      left: -22px;
+      top: 34px;
+      width: 1.5px;
+      background: var(--acento);
+      opacity: 0.4;
+    }
+
+    .paso-punto {
+      position: absolute;
+      left: -30px;
+      top: 14px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--fondo);
+      border: 2.5px solid var(--acento);
+      z-index: 1;
+    }
+
+    .fondo-suave .paso-punto { background: var(--superficie); }
+
+    .paso-boton {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      width: 100%;
+      text-align: left;
+      background: #FFFFFF;
+      border: 1px solid transparent;
+      border-radius: 4px;
+      cursor: pointer;
+      padding: 18px 20px;
+      font-family: var(--cuerpo);
+      transition: border-color 0.2s;
+    }
+
+    .fondo-suave .paso-boton { background: var(--fondo); }
+    .paso-boton:hover { border-color: var(--acento); }
+
+    .paso-titulo {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--tinta);
+    }
+
+    .paso-accion {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.82rem;
+      color: var(--profundo);
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+
+    .paso-flecha {
+      display: inline-block;
+      transition: transform 0.2s;
+    }
+
+    .paso-panel {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.25s ease;
+    }
+
+    .paso-panel p {
+      font-size: 0.95rem;
+      line-height: 1.65;
+      color: var(--tinta-suave);
+      margin: 14px 4px 4px;
+    }
+
+    /* ---------- Cierre ---------- */
+
+    .cierre { padding: 80px 0; }
+
+    .cierre-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+      margin: 40px 0 48px;
+    }
+
+    .cierre-tarjeta {
+      background: var(--superficie);
+      border-radius: 4px;
+      padding: 30px 28px;
+    }
+
+    .cierre-tarjeta .cejilla-mini {
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--acento);
+      margin-bottom: 14px;
+    }
+
+    .cierre-tarjeta p {
+      font-size: 0.97rem;
+      color: var(--tinta-suave);
+      line-height: 1.65;
+    }
+
+    .cierre-reflexion {
+      max-width: 700px;
+      font-size: 1.05rem;
+      line-height: 1.75;
+      border-left: 3px solid var(--acento);
+      padding-left: 20px;
+    }
+
+    /* ---------- Navegación entre casos ---------- */
+
+    .nav-casos {
+      padding: 50px 0 80px;
+      border-top: 1px solid var(--superficie);
+    }
+
+    .nav-casos-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .nav-caso-link {
+      text-decoration: none;
+      color: var(--tinta);
+    }
+
+    .nav-caso-link .etiqueta {
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--acento);
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .nav-caso-link .titulo-nav {
+      font-family: var(--titulos);
+      font-size: 1.3rem;
+      font-weight: 300;
+    }
+
+    .nav-caso-link:hover .titulo-nav { color: var(--profundo); }
+
+    /* ---------- Responsivo ---------- */
+
+    @media (max-width: 760px) {
+      .caso-hero { padding: 60px 0 40px; }
+      .capitulo { padding: 50px 0; }
+      .cierre-grid { grid-template-columns: 1fr; }
+      .meta-caso { gap: 24px; }
+      .nav-casos-inner { flex-direction: column; align-items: flex-start; }
+    }
+  
+    .btn-idioma {
+      font-family: var(--titulos);
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      color: var(--tinta-suave);
+      border: 1px solid var(--acento);
+      border-radius: 2px;
+      padding: 4px 10px;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+      white-space: nowrap;
+    }
+    .btn-idioma:hover {
+      background: var(--acento);
+      color: var(--fondo);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============ NAVEGACIÓN ============ -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="marca" href="index.html">Leticia Castañeda</a>
+      <ul class="nav-links">
+        <li><a href="index.html#proyectos">Proyectos</a></li>
+        <li><a href="sobre-mi.html">Sobre mí</a></li>
+        <li><a href="index.html#contacto">Contacto</a></li>
+      </ul>
+      <a class="btn-idioma" href="en/onboarding.html">EN</a>
+    </div>
+  </nav>
+
+  <!-- ============ HERO ============ -->
+  <header class="caso-hero">
+    <div class="contenedor">
+      <p class="caso-cejilla">Caso de estudio · Onboarding</p>
+      <h1>Del sistema escalable a la experiencia a medida</h1>
+      <p class="caso-tesis">
+        Hay dos maneras de entender el onboarding: como un proceso que la organización
+        le hace al nuevo ingreso, o como una experiencia que la organización diseña para
+        que alguien se sienta bienvenido y preparado desde el primer día. En manufactura
+        global construí el sistema que garantizaba lo primero para cientos de personas
+        a la vez. En la industria tequilera diseño lo segundo — una experiencia a la vez,
+        para talento internacional de tres continentes.
+      </p>
+
+      <div class="meta-caso">
+        <div class="meta-item">
+          <span class="meta-etiqueta">Industrias</span>
+          <span class="meta-valor">Manufactura global · Industria tequilera</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-etiqueta">Mi rol</span>
+          <span class="meta-valor">Diseño instruccional · Gestión de proceso · Hospitalidad estratégica</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-etiqueta">Alcance</span>
+          <span class="meta-valor">4 perfiles · Onboarding virtual · Colegas de 3 continentes</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ CAPÍTULO 1 ============ -->
+  <section class="capitulo">
+    <div class="contenedor">
+      <p class="capitulo-numero">Capítulo 1 · Manufactura global</p>
+      <h2>Cuando no existe el proceso, lo construyes tú</h2>
+      <div class="timeline" id="timeline-1"></div>
+    </div>
+  </section>
+
+  <!-- ============ CAPÍTULO 2 ============ -->
+  <section class="capitulo fondo-suave">
+    <div class="contenedor">
+      <p class="capitulo-numero">Capítulo 2 · Industria tequilera</p>
+      <h2>Diseñar la experiencia, cuidar a la persona</h2>
+      <div class="timeline" id="timeline-2"></div>
+    </div>
+  </section>
+
+  <!-- ============ CIERRE ============ -->
+  <section class="cierre">
+    <div class="contenedor">
+      <h2 class="titulo-seccion">Lo que aprendí cruzando ambos mundos</h2>
+      <hr class="linea">
+
+      <div class="cierre-grid">
+        <div class="cierre-tarjeta">
+          <p class="cejilla-mini">Manufactura global</p>
+          <p>Cuando no existe el proceso, lo construyes. Y cuando lo construyes con criterio pedagógico — pensando en quién aprende, cómo aprende y qué necesita llevarse — el resultado es un sistema que escala y que otros pueden operar sin que tú estés presente.</p>
+        </div>
+        <div class="cierre-tarjeta">
+          <p class="cejilla-mini">Industria tequilera</p>
+          <p>El onboarding internacional no es logística con contenido educativo — es hospitalidad con intención estratégica. Lo que una persona se lleva de esa experiencia determina cómo va a hablar de la organización en su país y qué tan pronto va a sentirse parte de algo más grande que su oficina.</p>
+        </div>
+      </div>
+
+      <p class="cierre-reflexion">
+        En ambos mundos, el onboarding bien diseñado hace lo mismo: le dice a la persona
+        que llegó al lugar correcto. La diferencia está en la escala — cientos o uno — y
+        en el medio. Pero la intención es siempre la misma.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ NAVEGACIÓN ENTRE CASOS ============ -->
+  <section class="nav-casos">
+    <div class="contenedor">
+      <div class="nav-casos-inner">
+        <a class="nav-caso-link" href="instructores.html">
+          <span class="etiqueta">← Caso anterior</span>
+          <span class="titulo-nav">Formación de instructores</span>
+        </a>
+        <a class="nav-caso-link" href="index.html#proyectos">
+          <span class="etiqueta">Ver todos los casos →</span>
+          <span class="titulo-nav">Proyectos</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PIE ============ -->
+  <footer>
+    <div class="pie-inner">
+      <span>© 2026 Leticia Castañeda</span>
+      <a href="https://open.spotify.com/show/7cbsrFc60LjgTQuLOnTyHB" target="_blank" rel="noopener">Kilometraje Corporativo · Podcast</a>
+    </div>
+  </footer>
+
+  <!-- ============ LÓGICA INTERACTIVA ============ -->
+  <script>
+    const datos = {
+      "timeline-1": [
+        {
+          titulo: "Dos onboardings rotos al llegar",
+          detalle: "Al incorporarme encontré dos formatos: operativo y administrativo. Las presentaciones estaban saturadas de texto, la información era repetitiva entre curso y curso, los tiempos no estaban estandarizados y los materiales eran visualmente obsoletos. El punto de partida era claro — había mucho por construir."
+        },
+        {
+          titulo: "Rediseño operativo: sin presupuesto, con ingenio",
+          detalle: "El onboarding operativo tenía un reto adicional: contratación masiva donde no todos los participantes tenían educación básica concluida. Rediseñé toda la agenda priorizando recursos visuales y auditivos. Sin presupuesto para herramientas externas, produje videos instruccionales con plataformas gratuitas y, con el equipo de diseño industrial interno, desarrollé un set de loterías para que los nuevos ingresos identificaran normas y regulaciones de forma lúdica. Nadie lo había hecho antes."
+        },
+        {
+          titulo: "Onboarding administrativo: estandarización y sinergia",
+          detalle: "Los SMEs de otras áreas que facilitaban sesiones no tenían material pulido ni estructura clara. Intervine con cada uno para mejorar sus cursos. Estandaricé la agenda para que, sin importar en qué sede se viviera el onboarding, los tiempos y contenidos fueran los mismos. Establecí un calendario de roles para que cada departamento supiera exactamente cuándo le tocaba facilitar."
+        },
+        {
+          titulo: "Lo que no existía: matriz, perfil técnico y pasaporte de inducción",
+          detalle: "Fui la primera en documentar una matriz de onboarding que aclaraba temas, alcances y responsabilidades de todos los perfiles. Cuando surgió la necesidad de un tercer perfil — el técnico — diseñé su agenda y la integré a la misma matriz. También creé el pasaporte de inducción: un documento físico con apariencia de pasaporte, checklist de actividades clave y firmas de cierre del nuevo ingreso y su líder, que convirtió un seguimiento administrativo en algo lúdico y con métricas reales."
+        },
+        {
+          titulo: "Pandemia: el onboarding virtual nace desde cero",
+          detalle: "Cuando llegó la pandemia no había antecedente en la empresa de cómo recibir nuevos ingresos de forma remota — y las contrataciones no se detuvieron. Diseñé y consolidé el formato de onboarding virtual desde cero, en medio de la incertidumbre. La estrategia se incorporó durante todo el tiempo de pandemia y se quedó como alternativa permanente para casos especiales."
+        }
+      ],
+      "timeline-2": [
+        {
+          titulo: "Un proceso nuevo: hospitalidad con intención estratégica",
+          detalle: "La tequilera tenía un onboarding orientado exclusivamente a personal de México. El reto que llegó en mi primer año fue diferente: equipos comerciales internacionales necesitaban conocer la operación — las sedes, el proceso, el producto, la cultura. Lo que parecía una agenda de visitas era en realidad un proyecto completo: hotel, transporte, vuelos, recorridos en sedes, reservaciones con directivos, cata con experto."
+        },
+        {
+          titulo: "El primer onboarding internacional: prueba de fuego",
+          detalle: "En plena visita me reportaron a un colega hospitalizado. Estuve dividida durante todo el recorrido — atendiendo la situación médica en paralelo, fungiendo como intérprete en las sedes, asegurándome de que el grupo viviera la experiencia que habían venido a vivir. Salimos adelante. Lo primero que hice al terminar fue documentar un protocolo de atención médica para que ningún onboarding futuro quedara sin ese respaldo."
+        },
+        {
+          titulo: "Iteración y sinergia con las sedes",
+          detalle: "Cada visita trajo ajustes: optimización de traslados, mejor uso del tiempo en sedes, coordinación cada vez más fluida con los líderes de planta. Lo que empezó como un proceso nuevo se fue convirtiendo en algo que las sedes ya esperaban y para el que se preparaban con genuino entusiasmo."
+        },
+        {
+          titulo: "El impacto que viaja: colegas en Asia que ya me conocían",
+          detalle: "Los colegas internacionales regresaban a sus países contando lo que habían vivido en México. La señal de que algo funcionó llegó cuando una colega de Asia, al conocerme en persona, me dijo que ya sabía quién era yo — sus compañeros le habían hablado de mí. Que se habían sentido cuidados. Como si tuvieran una hermana mayor en Guadalajara."
+        }
+      ]
+    };
+
+    function construirTimeline(contenedorId, pasos) {
+      const cont = document.getElementById(contenedorId);
+      pasos.forEach(function(p, i) {
+        const esUltimo = i === pasos.length - 1;
+        const item = document.createElement("div");
+        item.className = "paso-item";
+        item.style.marginBottom = esUltimo ? "0" : "16px";
+
+        item.innerHTML =
+          (!esUltimo ? '<div class="paso-conector" style="bottom:-16px;"></div>' : '') +
+          '<div class="paso-punto"></div>' +
+          '<button class="paso-boton" data-cont="' + contenedorId + '" data-i="' + i + '">' +
+            '<span class="paso-titulo">' + p.titulo + '</span>' +
+            '<span class="paso-accion">' +
+              '<span class="palabra-accion" data-cont="' + contenedorId + '" data-i="' + i + '">ver más</span>' +
+              '<span class="paso-flecha flecha-accion" data-cont="' + contenedorId + '" data-i="' + i + '">↓</span>' +
+            '</span>' +
+          '</button>' +
+          '<div class="paso-panel panel-detalle" data-cont="' + contenedorId + '" data-i="' + i + '">' +
+            '<p>' + p.detalle + '</p>' +
+          '</div>';
+
+        cont.appendChild(item);
+      });
+    }
+
+    function alternarPaso(contId, i) {
+      const panel = document.querySelector('.panel-detalle[data-cont="' + contId + '"][data-i="' + i + '"]');
+      const flecha = document.querySelector('.flecha-accion[data-cont="' + contId + '"][data-i="' + i + '"]');
+      const palabra = document.querySelector('.palabra-accion[data-cont="' + contId + '"][data-i="' + i + '"]');
+      const abierto = panel.style.maxHeight && panel.style.maxHeight !== "0px";
+      if (abierto) {
+        panel.style.maxHeight = "0px";
+        flecha.style.transform = "rotate(0deg)";
+        palabra.textContent = "ver más";
+      } else {
+        panel.style.maxHeight = panel.scrollHeight + 40 + "px";
+        flecha.style.transform = "rotate(180deg)";
+        palabra.textContent = "ver menos";
+      }
+    }
+
+    construirTimeline("timeline-1", datos["timeline-1"]);
+    construirTimeline("timeline-2", datos["timeline-2"]);
+
+    document.querySelectorAll(".paso-boton").forEach(function(btn) {
+      btn.addEventListener("click", function() {
+        alternarPaso(this.dataset.cont, this.dataset.i);
+      });
+    });
+
+    setTimeout(function() {
+      alternarPaso("timeline-1", "0");
+      alternarPaso("timeline-2", "0");
+    }, 50);
+  </script>
+
+</body>
+</html>
