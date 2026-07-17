@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Onboarding — Leticia Castañeda</title>
+  <meta name="description" content="Case study: onboarding in global manufacturing and the tequila industry — from a scalable system to a tailored experience.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400&family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+
+  <style>
+    .caso-hero { padding: 90px 0 60px; }
+    .caso-cejilla { font-size: 0.82rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--acento); margin-bottom: 22px; }
+    .caso-hero h1 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 24px; max-width: 760px; }
+    .caso-tesis { font-size: clamp(1.1rem, 2.4vw, 1.3rem); color: var(--tinta-suave); max-width: 680px; line-height: 1.65; }
+    .meta-caso { display: flex; gap: 36px; flex-wrap: wrap; margin-top: 40px; padding-top: 32px; border-top: 1px solid var(--superficie); }
+    .meta-item .meta-etiqueta { font-size: 0.76rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--acento); display: block; margin-bottom: 4px; }
+    .meta-item .meta-valor { font-size: 0.95rem; color: var(--tinta); }
+    .capitulo { padding: 70px 0; }
+    .capitulo.fondo-suave { background: var(--superficie); }
+    .capitulo-numero { font-size: 0.82rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--acento); margin-bottom: 6px; }
+    .capitulo h2 { font-size: clamp(1.5rem, 3.4vw, 2rem); margin-bottom: 36px; max-width: 640px; }
+    .timeline { position: relative; padding-left: 30px; max-width: 720px; }
+    .paso-item { position: relative; }
+    .paso-conector { position: absolute; left: -22px; top: 34px; width: 1.5px; background: var(--acento); opacity: 0.4; }
+    .paso-punto { position: absolute; left: -30px; top: 14px; width: 14px; height: 14px; border-radius: 50%; background: var(--fondo); border: 2.5px solid var(--acento); z-index: 1; }
+    .fondo-suave .paso-punto { background: var(--superficie); }
+    .paso-boton { display: flex; align-items: center; justify-content: space-between; gap: 16px; width: 100%; text-align: left; background: #FFFFFF; border: 1px solid transparent; border-radius: 4px; cursor: pointer; padding: 18px 20px; font-family: var(--cuerpo); transition: border-color 0.2s; }
+    .fondo-suave .paso-boton { background: var(--fondo); }
+    .paso-boton:hover { border-color: var(--acento); }
+    .paso-titulo { font-size: 1rem; font-weight: 500; color: var(--tinta); }
+    .paso-accion { display: flex; align-items: center; gap: 6px; font-size: 0.82rem; color: var(--profundo); flex-shrink: 0; white-space: nowrap; }
+    .paso-flecha { display: inline-block; transition: transform 0.2s; }
+    .paso-panel { max-height: 0; overflow: hidden; transition: max-height 0.25s ease; }
+    .paso-panel p { font-size: 0.95rem; line-height: 1.65; color: var(--tinta-suave); margin: 14px 4px 4px; }
+    .cierre { padding: 80px 0; }
+    .cierre-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; margin: 40px 0 48px; }
+    .cierre-tarjeta { background: var(--superficie); border-radius: 4px; padding: 30px 28px; }
+    .cierre-tarjeta .cejilla-mini { font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--acento); margin-bottom: 14px; }
+    .cierre-tarjeta p { font-size: 0.97rem; color: var(--tinta-suave); line-height: 1.65; }
+    .cierre-reflexion { max-width: 700px; font-size: 1.05rem; line-height: 1.75; border-left: 3px solid var(--acento); padding-left: 20px; }
+    .nav-casos { padding: 50px 0 80px; border-top: 1px solid var(--superficie); }
+    .nav-casos-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
+    .nav-caso-link { text-decoration: none; color: var(--tinta); }
+    .nav-caso-link .etiqueta { font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--acento); display: block; margin-bottom: 6px; }
+    .nav-caso-link .titulo-nav { font-family: var(--titulos); font-size: 1.3rem; font-weight: 300; }
+    .nav-caso-link:hover .titulo-nav { color: var(--profundo); }
+    .btn-idioma { font-family: var(--titulos); font-size: 0.78rem; letter-spacing: 0.12em; color: var(--tinta-suave); border: 1px solid var(--acento); border-radius: 2px; padding: 4px 10px; text-decoration: none; transition: background 0.2s, color 0.2s; white-space: nowrap; }
+    .btn-idioma:hover { background: var(--acento); color: var(--fondo); }
+    @media (max-width: 760px) { .caso-hero { padding: 60px 0 40px; } .capitulo { padding: 50px 0; } .cierre-grid { grid-template-columns: 1fr; } .meta-caso { gap: 24px; } .nav-casos-inner { flex-direction: column; align-items: flex-start; } }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="marca" href="index.html">Leticia Castañeda</a>
+      <ul class="nav-links">
+        <li><a href="index.html#projects">Projects</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+      <a class="btn-idioma" href="../onboarding.html">ES</a>
+    </div>
+  </nav>
+
+  <header class="caso-hero">
+    <div class="contenedor">
+      <p class="caso-cejilla">Case study · Onboarding</p>
+      <h1>From a scalable system to a tailored experience</h1>
+      <p class="caso-tesis">
+        There are two ways to think about onboarding: as a process the organization
+        does to the new hire, or as an experience the organization designs so someone
+        feels welcomed and ready from day one. In global manufacturing I built the
+        system that guaranteed the first — for hundreds of people at a time. In the
+        tequila industry I design the second — one experience at a time, for
+        international talent from three continents.
+      </p>
+      <div class="meta-caso">
+        <div class="meta-item">
+          <span class="meta-etiqueta">Industries</span>
+          <span class="meta-valor">Global manufacturing · Tequila industry</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-etiqueta">My role</span>
+          <span class="meta-valor">Instructional design · Process management · Strategic hospitality</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-etiqueta">Scope</span>
+          <span class="meta-valor">4 profiles · Virtual onboarding · Colleagues from 3 continents</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="capitulo">
+    <div class="contenedor">
+      <p class="capitulo-numero">Chapter 1 · Global manufacturing</p>
+      <h2>When the process doesn't exist, you build it</h2>
+      <div class="timeline" id="timeline-1"></div>
+    </div>
+  </section>
+
+  <section class="capitulo fondo-suave">
+    <div class="contenedor">
+      <p class="capitulo-numero">Chapter 2 · Tequila industry</p>
+      <h2>Design the experience, take care of the person</h2>
+      <div class="timeline" id="timeline-2"></div>
+    </div>
+  </section>
+
+  <section class="cierre">
+    <div class="contenedor">
+      <h2 class="titulo-seccion">What I learned crossing both worlds</h2>
+      <hr class="linea">
+      <div class="cierre-grid">
+        <div class="cierre-tarjeta">
+          <p class="cejilla-mini">Global manufacturing</p>
+          <p>When the process doesn't exist, you build it. And when you build it with pedagogical judgment — thinking about who learns, how they learn, and what they need to take away — the result is a system that scales and that others can run without you being there.</p>
+        </div>
+        <div class="cierre-tarjeta">
+          <p class="cejilla-mini">Tequila industry</p>
+          <p>International onboarding isn't logistics with educational content — it's hospitality with strategic intent. What someone takes away from that experience shapes how they'll talk about the organization back home and how quickly they'll feel part of something bigger than their own office.</p>
+        </div>
+      </div>
+      <p class="cierre-reflexion">
+        In both worlds, well-designed onboarding does the same thing: it tells the person
+        they arrived at the right place. The difference is in scale — hundreds or one —
+        and in the medium. But the intention is always the same.
+      </p>
+    </div>
+  </section>
+
+  <section class="nav-casos">
+    <div class="contenedor">
+      <div class="nav-casos-inner">
+        <a class="nav-caso-link" href="instructores.html">
+          <span class="etiqueta">← Previous case</span>
+          <span class="titulo-nav">Internal instructor training</span>
+        </a>
+        <a class="nav-caso-link" href="index.html#projects">
+          <span class="etiqueta">All projects →</span>
+          <span class="titulo-nav">Projects</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="pie-inner">
+      <span>© 2026 Leticia Castañeda</span>
+      <a href="https://open.spotify.com/show/7cbsrFc60LjgTQuLOnTyHB" target="_blank" rel="noopener">Kilometraje Corporativo · Podcast</a>
+    </div>
+  </footer>
+
+  <script>
+    const datos = {
+      "timeline-1": [
+        { titulo: "Two broken onboardings from day one", detalle: "When I joined I found two formats: operative and administrative. Presentations were packed with text, information was repeated across courses, timing wasn't standardized, and materials were visually outdated. The starting point was clear — there was a lot to build." },
+        { titulo: "Operative redesign: no budget, full ingenuity", detalle: "The operative onboarding had an extra challenge: mass hiring where not all participants had completed basic education. I redesigned the entire agenda with visual and auditory resources as the priority. Without a budget for external tools, I produced instructional videos using free platforms and, with the internal industrial design team, created a lotería-style game for new hires to learn company norms and regulations in a playful way. Nobody had done it before." },
+        { titulo: "Administrative onboarding: standardization and teamwork", detalle: "The SMEs from other areas who facilitated sessions didn't have polished materials or clear structure. I worked with each one to improve their courses. I standardized the agenda so that regardless of which site the onboarding happened at, the timing and content were the same. I set up a role calendar so each department knew exactly when it was their turn to facilitate." },
+        { titulo: "What didn't exist: matrix, technical profile, and onboarding passport", detalle: "I was the first to document an onboarding matrix clarifying topics, scope, and responsibilities across all profiles. When a need arose for a third profile — the technical one — I designed their agenda and added it to the matrix. I also created the onboarding passport: a physical document designed to look like a passport, with a checklist of key activities and sign-off signatures from the new hire and their manager, turning an administrative follow-up into something playful with real metrics." },
+        { titulo: "Pandemic: virtual onboarding built from nothing", detalle: "When the pandemic hit there was no precedent in the company for how to onboard new hires remotely — and hiring didn't stop. I designed and established the virtual onboarding format from scratch, in the middle of uncertainty. The approach ran throughout the pandemic and remained as a permanent alternative for special cases afterward." }
+      ],
+      "timeline-2": [
+        { titulo: "A new process: hospitality with strategic intent", detalle: "The tequila industry had an onboarding process oriented exclusively toward Mexico-based staff. The challenge that came in my first year was different: international commercial teams needed to get to know the operation — the sites, the process, the product, the culture. What looked like a visit agenda was really a full project: hotel, transportation, flights, site tours, executive dinners, expert tasting sessions." },
+        { titulo: "First international onboarding: trial by fire", detalle: "Mid-visit, I was notified that a colleague had been hospitalized. I managed both situations in parallel throughout the day — following up on the medical situation, acting as interpreter at the sites, making sure the group had the experience they'd come for. We pulled through. The first thing I did afterward was document a medical care protocol so no future onboarding would be without that safety net." },
+        { titulo: "Iteration and synergy with the sites", detalle: "Each visit brought adjustments: optimized transfers, better use of time at sites, increasingly smooth coordination with plant managers. What started as a new process became something the sites genuinely looked forward to and prepared for with enthusiasm." },
+        { titulo: "Impact that travels: colleagues in Asia who already knew me", detalle: "International colleagues went back to their home countries sharing what they'd experienced in Mexico. The signal that something had worked came when a colleague from Asia, upon meeting me in person, told me she already knew who I was — her teammates had told her about me. That they'd felt taken care of. Like they had an older sister in Guadalajara." }
+      ]
+    };
+
+    function construirTimeline(contenedorId, pasos) {
+      const cont = document.getElementById(contenedorId);
+      pasos.forEach(function(p, i) {
+        const esUltimo = i === pasos.length - 1;
+        const item = document.createElement("div");
+        item.className = "paso-item";
+        item.style.marginBottom = esUltimo ? "0" : "16px";
+        item.innerHTML =
+          (!esUltimo ? '<div class="paso-conector" style="bottom:-16px;"></div>' : '') +
+          '<div class="paso-punto"></div>' +
+          '<button class="paso-boton" data-cont="' + contenedorId + '" data-i="' + i + '">' +
+            '<span class="paso-titulo">' + p.titulo + '</span>' +
+            '<span class="paso-accion"><span class="palabra-accion" data-cont="' + contenedorId + '" data-i="' + i + '">see more</span><span class="paso-flecha flecha-accion" data-cont="' + contenedorId + '" data-i="' + i + '">↓</span></span>' +
+          '</button>' +
+          '<div class="paso-panel panel-detalle" data-cont="' + contenedorId + '" data-i="' + i + '"><p>' + p.detalle + '</p></div>';
+        cont.appendChild(item);
+      });
+    }
+
+    function alternarPaso(contId, i) {
+      const panel = document.querySelector('.panel-detalle[data-cont="' + contId + '"][data-i="' + i + '"]');
+      const flecha = document.querySelector('.flecha-accion[data-cont="' + contId + '"][data-i="' + i + '"]');
+      const palabra = document.querySelector('.palabra-accion[data-cont="' + contId + '"][data-i="' + i + '"]');
+      const abierto = panel.style.maxHeight && panel.style.maxHeight !== "0px";
+      if (abierto) { panel.style.maxHeight = "0px"; flecha.style.transform = "rotate(0deg)"; palabra.textContent = "see more"; }
+      else { panel.style.maxHeight = panel.scrollHeight + 40 + "px"; flecha.style.transform = "rotate(180deg)"; palabra.textContent = "see less"; }
+    }
+
+    construirTimeline("timeline-1", datos["timeline-1"]);
+    construirTimeline("timeline-2", datos["timeline-2"]);
+    document.querySelectorAll(".paso-boton").forEach(function(btn) { btn.addEventListener("click", function() { alternarPaso(this.dataset.cont, this.dataset.i); }); });
+    setTimeout(function() { alternarPaso("timeline-1", "0"); alternarPaso("timeline-2", "0"); }, 50);
+  </script>
+</body>
+</html>
